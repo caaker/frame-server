@@ -1,12 +1,13 @@
 {
-  "name": "frame-server",
-  "version": "1.0.0",
-  "description": "Server side code for [livelong.ai](https://www.livelong.ai).",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "dependencies": {
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "mongoose": "^8.9.2",
+    "passport": "^0.7.0",
+    "passport-google-oauth": "^2.0.0",
+    "ws": "^8.18.0"
+  }
 }
