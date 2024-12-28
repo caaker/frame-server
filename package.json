@@ -1,0 +1,12 @@
+{
+  "name": "frame-server",
+  "version": "1.0.0",
+  "description": "Server side code for [livelong.ai](https://www.livelong.ai).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+
+<!--------------------------------------------------------------------------------------------------
+1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
+--------------------------------------------------------------------------------------------------->
+
+
+<!--------------------------------------------------------------------------------------------------
+Google site verification
+--------------------------------------------------------------------------------------------------->
+
+
+    <meta name="google-site-verification" content="h5X2BKBLL0btkqCittiD1f1m85nhrU6ntzMZvtlgbK0" />
+
+
+<!--------------------------------------------------------------------------------------------------
+Responsive Web Design
+--------------------------------------------------------------------------------------------------->
+
+
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, maximum-scale=1" />
+
+
+<!--------------------------------------------------------------------------------------------------
+Customize for Search
+--------------------------------------------------------------------------------------------------->
+
+
+    <title>Livelong - Health & Longevity Insights | Nutrition, Psychology, and Wellness</title>
+
+    <meta name="keywords"
+          content="health, nutrition, psychology, longevity, articles, favorites, sharing, saving" />
+
+    <meta name='description'
+          content='Your trusted ally in health and strength.  Join us in a pursuit to live longer and stronger.' />
+
+
+<!--------------------------------------------------------------------------------------------------
+Favicons - apple icon can not be transparent
+--------------------------------------------------------------------------------------------------->
+
+
+    <link rel="apple-touch-icon"
+          sizes="144x144" href="/images/favicon-apple.png" />
+
+<!--
+
+    general favicon is now added dynamically in javascript
+    update to .ico file which holds multiple dimensions
+    
+    <link rel="shortcut icon"
+        type="image/x-icon" href="/images/favicon.png"/>
+
+ -->
+
+  </head>
+  <body>
+
+
+<!--------------------------------------------------------------------------------------------------
+Global CSS
+--------------------------------------------------------------------------------------------------->
+
+
+  <style>
+
+    html{
+      height: 100%;
+      width: 100%;
+    }
+    body{
+      display: flex;
+      height: 100%;
+      width: 100%;
+      padding: 0px;
+      margin: 0px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    #app{
+      display: flex;
+      height: 100%;
+      width: 100%;
+      padding: 0px;
+      margin: 0px;
+    }
+    p{
+      margin: 0px;
+      padding: 0px;
+      line-height: 100%;
+      font-size: 11px; 
+    }
+    input[type=text]{
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      border: none;
+    }
+
+    /* for testing, is this useful? */
+    :root {
+       --main-bg-color: brown; 
+    }
+
+  </style>
+
+
+<!--------------------------------------------------------------------------------------------------
+Global JavaScript
+--------------------------------------------------------------------------------------------------->
+
+
+  <script>
+
+    window.console.logD = function(arg1, arg2) {
+      const on = true;
+      if(on) {
+        let color = arg2 || '#0000ff';
+        let str = '%c' + arg1;
+        console.log(str, 'color: ' + color);
+      }
+    }
+
+  </script>
+
+
+<!--------------------------------------------------------------------------------------------------
+React
+--------------------------------------------------------------------------------------------------->
+
+
+  <div id="app"></div>
+  <script src="bundle.js"></script>
+
+
+<!--------------------------------------------------------------------------------------------------
+Close tags
+--------------------------------------------------------------------------------------------------->
+
+
+  </body>
+</html>

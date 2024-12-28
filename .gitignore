@@ -1,0 +1,24 @@
+#
+# created by user
+#
+
+*private*
+
+#
+# created by apps+
+#
+
+# created by MacOS
+*.DS_Store
+
+# created by NPM
+**/node_modules/
+
+# created by javac
+**/classes/
+
+# created python
+__pycache__
+
+# created by c and cpp
+**/out/
