@@ -10,14 +10,14 @@ const app = express();
 // use node http to create a server
 const server = require('./mod_0_server')(app);
 
+// required by heroku which is behind an ngix server; required after https upgrade
+// app.enable('trust proxy');
+
 // redirect http requests to https
 require('./mod_1_redirect')(app);
 
 // log ip addresses of clients
 require('./mod_2_ip')(app);
-
-// required by heroku which is behind an ngix server; required after https upgrade
-app.enable('trust proxy');
 
 // start websocket server
 require('./mod_3_ws')(server);

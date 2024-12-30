@@ -1,16 +1,18 @@
 console.log('DEBUG: IP:');
 
-function ip(app) {
-
-  // called 8 times on a page reload, needs updating
+function ipexport(app) {
   app.use((req, res, next) => {
+
+    // x-forwarded-for is often populated by a proxy server to hold the real clients ip address
     const ip1 = req.headers['x-forwarded-for'];
+
+    // ip address directly from the request socket if there is no proxy this will be correct
     const ip2 = req.socket.remoteAddress;
+
+    // later we will log this, currently not used fool
     const ip =  ip1 || ip2;
     next();
   });
 }
 
-module.exports = ip;
-
-
+module.exports = ipexport;
