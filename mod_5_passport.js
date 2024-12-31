@@ -2,7 +2,7 @@ console.log('DEBUG: passport:');
 
 const Passport = require('passport');
 const GoogleAuth = require('passport-google-oauth').OAuth2Strategy;
-const database = require('./database0/mongoose.js');
+const database = require('./mongo/mongoose');
 
 
 /*
@@ -14,7 +14,7 @@ if (process.env.PASSPORT) {
   connection = JSON.parse(process.env.PASSPORT).Google;
   console.log('DEBUG: passport: connection string found');
 } else {
-  console.error('DEBUG: passport: connection string not found');
+  console.error('\x1b[31m' + 'DEBUG: passport: connection string not found' + '\x1b[30m');
   connection = null;
 }
 

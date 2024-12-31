@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const DBM = require('../database0/mongoose');
+const DBM = require('../mongo/mongoose');
 
 // create
 router.route('/add').post((req, res) => {

@@ -1,4 +1,4 @@
-console.log('DEBUG: session: update to Redis');
+console.log('DEBUG: session:');
 
 const Session = require('express-session');
 
