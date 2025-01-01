@@ -12,7 +12,7 @@ const database = require('./mongo/mongoose');
 let connection;
 if (process.env.PASSPORT) {
   connection = JSON.parse(process.env.PASSPORT).Google;
-  console.log('DEBUG: passport: connection string found');
+  // console.log('DEBUG: passport: connection string found');
 } else {
   console.error('\x1b[31m' + 'DEBUG: passport: connection string not found' + '\x1b[30m');
   connection = null;

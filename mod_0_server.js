@@ -9,7 +9,7 @@ function server(app) {
       console.error('DEBUG: Error starting server module');
       process.exit(1);     
     }
-    console.log('\x1b[32m' + 'DEBUG: server: module started on port ' + port + '\x1b[30m');
+    console.log('\x1b[32m' + 'DEBUG: server: started: port ' + port + '\x1b[30m');
   });
 }
 // consider sigint and sigterm handlers
