@@ -11,6 +11,7 @@ router.route('/add').post((req, res) => {
 // read
 router.route('/get').get((req, res) => {
   DBM.getAllArticles().then( (results) => {
+    console.log('DEBUG: route: articles: getAllArticles: length: ' + results.length);
     res.status(200).json(results);
   }).catch(errorHandler);
 });
@@ -33,7 +34,7 @@ router.route('/delete/:_id').delete((req, res) => {
 function errorHandler(err) {
   console.error('DEBUG: DBM: Error: ');
   console.error(err);
-  res.status(500).send('DEBUG: MONGOOSE: INTERNAL ERROR', err);
+  // res.status(500).send('DEBUG: MONGOOSE: INTERNAL ERROR', err); // give access to res
 }
 
 module.exports = router;

@@ -1,7 +1,14 @@
-console.log('DEBUG: websocket:');
+/*
+Ideally this file only handles:
+  Starting the websocket server
+  Opening weboscket connections
+  Closing weboscket connections
+  Routing messages
+*/
 
+console.log('DEBUG: websocket:');
 const WebSocket = require('ws');
-const User = require('./ws/ws-user');
+const User = require('./websocket/ws-user');
 
 // starts a websocket server and listens for connection events
 function websocket(server) {
@@ -16,6 +23,7 @@ function clientConnected(socket) {
   socket.on('close', () => clientClosed(socket));
 }
 
+// close event
 function clientClosed(socket) {
   User.clientClosed(socket);
 }

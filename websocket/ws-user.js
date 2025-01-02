@@ -1,4 +1,4 @@
-const getClientID = require('./ws-client-id');
+const getClientID = require('./ws-user-id');
 const users = require('./ws-user-map');
 const exported = {};
 
@@ -11,13 +11,14 @@ exported.clientConnected = function(socket) {
     type: 'connected'
   };
   users.set(id, user_object);
-  console.log('DEBUG: websocket: client connected: ' + id);
+  console.log('DEBUG: websocket: client connected: id: ' + id);
+  console.log('DEBUG: websocket: total clients: ' + users.size);
 };
 
 // when a client disconnects delete them from the user map
 exported.clientClosed = function(socket) {
   users.delete(socket._id);
-  console.log('DEBUG: websocket: client disconnected: ' + socket._id);
+  console.log('DEBUG: websocket: client disconnected: id: ' + socket._id);
 };
 
 // we have received a message event of type fingerprint, which is on obj.message

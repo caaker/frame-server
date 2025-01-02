@@ -1,10 +1,11 @@
 console.log('----------------------------------------------------------------------------------------------------');
 console.log('                                         STARTING                                                   ');
 console.log('----------------------------------------------------------------------------------------------------');
+console.log('DEBUG: index.js: seconds: ' + (new Date).getSeconds());
 
 const express = require('express');
 const app = express();
-
+ 
 // GENERAL
 
 // use node http to create a server
