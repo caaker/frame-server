@@ -1,18 +1,18 @@
 const router = require('express').Router();
 const DBM = require('../mongo/mongoose');
 
-// create
-router.route('/add').post((req, res) => {
-  DBM.saveArticle(req.body).then((val) => {
-    res.status(200).json(val);
-  }).catch(errorHandler);
-});
-
 // read
 router.route('/get').get((req, res) => {
   DBM.getAllArticles().then( (results) => {
     console.log('DEBUG: route: articles: getAllArticles: length: ' + results.length);
     res.status(200).json(results);
+  }).catch(errorHandler);
+});
+
+// create
+router.route('/add').post((req, res) => {
+  DBM.saveArticle(req.body).then((val) => {
+    res.status(200).json(val);
   }).catch(errorHandler);
 });
 

@@ -2,14 +2,14 @@ const router = require('express').Router();
 const passport = require('passport');
 
 
-// path is /auth/google
+// receives at /auth/google and calls passport.authenticate
 const scope = {
   scope: ['email', 'profile']
 };
 router.get('/google', passport.authenticate('google', scope));
 
 
-// path is /auth/google/callback
+// receives at /auth/google/callback and sends user to / on success
 const options = {
   successRedirect: '/',
   failureRedirect: '/login',
@@ -17,9 +17,13 @@ const options = {
 router.get('/google/callback', passport.authenticate('google', options));
 
 
-// path is /auth/logout and sends user to /
+// receives at /auth/logout and sends user to /
 router.route('/logout').get((req, res) => {
-  req.logout();
+
+  // passport update requires a callback to logout or error is thrown
+  req.logout((err) => {
+
+  });
   res.redirect('/');
 });
 

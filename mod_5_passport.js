@@ -1,4 +1,10 @@
+/*
+ *
+**/
+
+
 console.log('DEBUG: passport:');
+
 
 const Passport = require('passport');
 const GoogleAuth = require('passport-google-oauth').OAuth2Strategy;
@@ -6,17 +12,24 @@ const database = require('./mongo/mongoose');
 
 
 /*
- *    Passport methods
+ *    find the connection string and parse it
 **/
+
 
 let connection;
 if (process.env.PASSPORT) {
   connection = JSON.parse(process.env.PASSPORT).Google;
-  // console.log('DEBUG: passport: connection string found');
+  console.log('DEBUG: passport: connection string found');
 } else {
-  console.error('\x1b[31m' + 'DEBUG: passport: connection string not found' + '\x1b[30m');
+  console.log('\x1b[31m' + 'DEBUG: passport: connection string not found' + '\x1b[30m');
   connection = null;
 }
+
+
+/*
+ *    with a connection string we can now configure passport
+**/
+
 
 if(connection) {
   Passport.use('google', new GoogleAuth(connection, getOrSaveUser));
@@ -26,47 +39,28 @@ if(connection) {
 
 
 /*
- *    serialized and deserialize functions
+ *    getOrSaveUser is called once per authenticatin attempt
 **/
 
 
-// used by passport.serializeUser()
-function serialize(profile, done) {
-  done(null, profile.id_google);
-}
-
-// used by passport.deserializeUser()
-function deserialize(id_google, done) {
-  database.getUser(id_google).then((res) => {
-    done(null, res[0]);
-  });
-}
-
-
-/*
- *    getOrSaveUser and helper functions
-**/
-
-
-// used by new GoogleAuth
 function getOrSaveUser(accessToken, refreshToken, profile, done) {
   const props = filterGoogleProps(profile);
   database.getUser(props.id_google).then( (response) => {
     if(response[0]) {
-      getUser(done, props);
+      userFound(done, props);
     } else {
       saveUser(done, props);
     }
   }).catch(error => done(error));
 }
 
-// get the user
-function getUser(done, props) {
+// the user was found in the database
+function userFound(done, props) {
   console.log('DEBUG: passport: user exists in database: ');
   done(null, props);
 }
 
-// save the user
+// save the user to database
 function saveUser(done, props) {
   console.log('DEBUG: passport: user does not exists in database: ');
   return database.saveUser(props).then(() => {
@@ -74,6 +68,7 @@ function saveUser(done, props) {
   });
 }
 
+// these are the properties we care about
 function filterGoogleProps(profile) {
   const props = {};
   props.id_google = profile.id;
@@ -82,6 +77,24 @@ function filterGoogleProps(profile) {
   props.pic_url = profile.photos[0].value;
   props.type = profile._json.objectType;
   return props;
+}
+
+
+/*
+ *    serialized and deserialize functions
+**/
+
+
+// used to save a unique identifier for the user, not the user data, in this case profile.id_google
+function serialize(profile, done) {
+  done(null, profile.id_google);
+}
+
+// retreives the full user object from the database
+function deserialize(id_google, done) {
+  database.getUser(id_google).then((res) => {
+    done(null, res[0]);
+  });
 }
 
 
