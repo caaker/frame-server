@@ -43,7 +43,7 @@ function HTTPLocalServer(server) {
 }
 
 function exportServer(app) {
-  // server can only listen on one port
+  // server can only listen on one port per trial and error
   const server = http.createServer(app);
   // HTTPserver(server);
   HTTPLocalServer(server);
@@ -52,3 +52,8 @@ function exportServer(app) {
 
 // consider sigint and sigterm handlers
 module.exports = exportServer;
+
+// does not appear useful as it fires right after listen()
+// server.on('listening', () => {
+//   console.log('\x1b[32m' + 'DEBUG: server: listening: ' + '\x1b[30m');
+// });

@@ -15,10 +15,13 @@ const app = express();
  
 // GENERAL
 
-// use node http to create a server
-const server = require('./mod_0_server')(app);
+// allow cross origin access with cors module
+require('./mod_00_cors')(app);
 
-// start websocket server - note the only module dependent upon server currently
+// use node http to create a server
+const server = require('./mod_01_server')(app);
+
+// used to create a websockets server from the server
 require('./mod_3_ws')(server);
 
 // redirect http requests to https

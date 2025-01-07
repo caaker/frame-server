@@ -12,6 +12,7 @@ const User = require('./websocket/ws-user');
 
 // starts a websocket server and listens for connection events
 function websocket(server) {
+  // console.log('\x1b[32m' + 'DEBUG: websocket: server started' + '\x1b[30m');
   ws_server = new WebSocket.Server({ server });
   ws_server.on('connection', clientConnected);
 }
