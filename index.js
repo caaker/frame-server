@@ -44,7 +44,7 @@ app.use(session_instance);
 
 // PASSPORT
 
-// consider pure implementation of google authorization
+// consider pure implementation of google authentication
 const passport = require('./mod_5_passport');
 app.use(passport.initialize());
 app.use(passport.session());

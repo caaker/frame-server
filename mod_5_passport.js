@@ -16,9 +16,15 @@ const database = require('./mongo/mongoose');
 **/
 
 
+// holds clientID, clientSecret, and callbackURL 
+//    callbackURL = "http://localhost:3000/auth/google/callback"
+//    callbackURL = "https://frame-server-x8qw.onrender.com/auth/google/callback"
+// remove from environment variable and put in code later
+let baseURL = 'https://frame-server-x8qw.onrender.com';
 let connection;
 if (process.env.PASSPORT) {
   connection = JSON.parse(process.env.PASSPORT).Google;
+  // connection.callbackURL = baseURL + '/auth/google/callback';
   console.log('DEBUG: passport: connection string found');
 } else {
   console.log('\x1b[31m' + 'DEBUG: passport: connection string not found' + '\x1b[30m');
@@ -32,7 +38,8 @@ if (process.env.PASSPORT) {
 
 
 if(connection) {
-  Passport.use('google', new GoogleAuth(connection, getOrSaveUser));
+  const test = new GoogleAuth(connection, getOrSaveUser);
+  Passport.use('google', test);
   Passport.serializeUser(serialize);
   Passport.deserializeUser(deserialize);
 }
@@ -56,14 +63,14 @@ function getOrSaveUser(accessToken, refreshToken, profile, done) {
 
 // the user was found in the database
 function userFound(done, props) {
-  console.log('DEBUG: passport: user exists in database: ');
+  console.log('DEBUG: passport: user found in the database: ');
   done(null, props);
 }
 
 // save the user to database
 function saveUser(done, props) {
-  console.log('DEBUG: passport: user does not exists in database: ');
   return database.saveUser(props).then(() => {
+    console.log('DEBUG: passport: user saved to the database: ');
     done(null, props);
   });
 }
