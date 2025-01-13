@@ -16,10 +16,6 @@ const database = require('./mongo/mongoose');
 **/
 
 
-// holds clientID, clientSecret, and callbackURL 
-//    callbackURL = "http://localhost:3000/auth/google/callback"
-//    callbackURL = "https://frame-server-x8qw.onrender.com/auth/google/callback"
-// remove from environment variable and put in code later
 let baseURL = 'https://frame-server-x8qw.onrender.com';
 let connection;
 if (process.env.PASSPORT) {

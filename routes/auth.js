@@ -5,9 +5,11 @@ const passport = require('passport');
 
 // note we need to send 'origin' to google, which will send it back to us below
 router.get('/google', (req, res, next) => {
+  const origin = req.protocol + '://' + req.get('host');
+  console.log('DEBUG: route: google auth: state being sent to google: ' + origin );
   const config = {
     scope: ['email', 'profile'],
-    state: req.protocol + '://' + req.get('host')
+    state: origin
   }
   passport.authenticate('google', config )(req, res, next);
 });
@@ -22,7 +24,7 @@ function getHost(req, res, next) {
   // let host = req.protocol + '://' + req.get('host');
   let host = req.query.state;
   req.auth_options = { successRedirect: host + '/', failureRedirect: host + '/' };
-  console.log('DEBUG: route: google auth: getHost: successRedirect: ' + req.auth_options.successRedirect);
+  console.log('DEBUG: route: google auth: state received from google:  ' + req.auth_options.successRedirect);
   next();
 }
 
