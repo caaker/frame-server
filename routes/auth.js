@@ -6,7 +6,7 @@ const passport = require('passport');
 // note we need to send 'origin' to google, which will send it back to us below
 router.get('/google', (req, res, next) => {
   const o4 = req.get('referer');
-  console.log('DEBUG: route: google auth: state being sent to google: ');
+  console.log('DEBUG: route: google auth: state being sent to google: ' + o4);
   // console.log(req.headers);
   const config = {
     scope: ['email', 'profile'],
