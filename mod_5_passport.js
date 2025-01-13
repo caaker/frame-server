@@ -90,12 +90,14 @@ function filterGoogleProps(profile) {
 
 // used to save a unique identifier for the user, not the user data, in this case profile.id_google
 function serialize(profile, done) {
+  console.log('DEBUG: passport: user serialized: id: ' + profile.id_google);
   done(null, profile.id_google);
 }
 
 // retreives the full user object from the database
 function deserialize(id_google, done) {
   database.getUser(id_google).then((res) => {
+    console.log('DEBUG: passport: user deserialized: id: ' + id_google);
     done(null, res[0]);
   });
 }
