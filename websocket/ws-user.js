@@ -12,7 +12,7 @@ exported.clientConnected = function(socket) {
   };
   users.set(id, user_object);
   // console.log('DEBUG: websocket: client connected: id: ' + id);
-  console.log('DEBUG: websocket: total clients: ' + users.size);
+  // console.log('DEBUG: websocket: total clients: ' + users.size);
 };
 
 // when a client disconnects delete them from the user map
@@ -37,7 +37,7 @@ exported.receivedFingerPrint = function(socket, obj) {
 // we have recevied a message event of type echo, send it directly back to the client
 exported.receivedEcho = function(socket, obj) {
   sendObject(obj.message, socket);
-  console.log('DEBUG: websocket: received echo: ' + socket._id);
+  // console.log('DEBUG: websocket: received echo: ' + socket._id);
 };
 
 // stringify the user object and send it to the client

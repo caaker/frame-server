@@ -5,7 +5,7 @@ const DBM = require('../mongo/mongoose');
 router.route('/get').get((req, res) => {
   // console.log('DEBUG: route:' + req.hostname);
   DBM.getAllArticles().then( (results) => {
-    console.log('DEBUG: route: articles: getAllArticles: length: ' + results.length);
+    // console.log('DEBUG: route: articles: getAllArticles: length: ' + results.length);
     res.status(200).json(results);
   }).catch(errorHandler);
 });

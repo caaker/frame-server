@@ -1,16 +1,26 @@
 const router = require('express').Router();
 const passport = require('passport');
 
+/****************************************************************************************************/
 
-// auth/google begins the authentication request from the client by calling passport.authenticate
-const scope = {
-  scope: ['email', 'profile']
-};
-router.get('/google', passport.authenticate('google', scope));
+// note we need to send 'origin' to google, which will send it back to us below
+router.get('/google', (req, res, next) => {
+  const config = {
+    scope: ['email', 'profile'],
+    state: req.protocol + '://' + req.get('host')
+  }
+  passport.authenticate('google', config )(req, res, next);
+});
 
-// google has fielded the request and responded - we will always respond to the requester
+/****************************************************************************************************/
+
+// google traffic hits auth/google/callback which is seen as being sent from here
+router.get('/google/callback', getHost, authenticateWrap );
+
+// google has fielded the request and responded
 function getHost(req, res, next) {
-  let host = req.protocol + '://' + req.get('host');
+  // let host = req.protocol + '://' + req.get('host');
+  let host = req.query.state;
   req.auth_options = { successRedirect: host + '/', failureRedirect: host + '/' };
   console.log('DEBUG: route: google auth: getHost: successRedirect: ' + req.auth_options.successRedirect);
   next();
@@ -21,11 +31,11 @@ function authenticateWrap(req, res, next) {
   passport.authenticate('google', req.auth_options)(req, res, next);
 }
 
-router.get('/google/callback', getHost, authenticateWrap );
-
 function getHostAgain(req) {
   return req.protocol + '://' + req.get('host') + '/';
 }
+
+/****************************************************************************************************/
 
 // auth/logout begins the logout process
 router.route('/logout').get((req, res) => {
@@ -50,3 +60,22 @@ module.exports = router;
 //   req.logout((err) => { });
 //   res.redirect('/');
 // });
+
+
+
+
+// // auth/google begins the authentication request from the client by calling passport.authenticate
+// const config = {
+//   scope: ['email', 'profile'],
+//   state: "hold"
+// };
+// router.get('/google', passport.authenticate('google', config));
+
+
+// // google has fielded the request and responded
+// function getHost(req, res, next) {
+//   let host = req.protocol + '://' + req.get('host');
+//   req.auth_options = { successRedirect: host + '/', failureRedirect: host + '/' };
+//   console.log('DEBUG: route: google auth: getHost: successRedirect: ' + req.auth_options.successRedirect);
+//   next();
+// }
