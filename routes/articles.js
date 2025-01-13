@@ -3,6 +3,7 @@ const DBM = require('../mongo/mongoose');
 
 // read
 router.route('/get').get((req, res) => {
+  // console.log('DEBUG: route:' + req.hostname);
   DBM.getAllArticles().then( (results) => {
     console.log('DEBUG: route: articles: getAllArticles: length: ' + results.length);
     res.status(200).json(results);
@@ -30,11 +31,9 @@ router.route('/delete/:_id').delete((req, res) => {
   }).catch(errorHandler);
 });
 
-// handles error, combine this with links error handler, and require it from external file later
+// will catch errors when there is no connection, need to move this
 function errorHandler(err) {
-  console.error('DEBUG: DBM: Error: ');
-  console.error(err);
-  // res.status(500).send('DEBUG: MONGOOSE: INTERNAL ERROR', err); // give access to res
+  console.error('DEBUG: routes: articles: error ');
 }
 
 module.exports = router;
