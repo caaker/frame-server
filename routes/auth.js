@@ -8,6 +8,7 @@ router.get('/google', (req, res, next) => {
   const o1 = req.protocol + '://' + req.get('host');
   const o2 = req.headers.origin;
   const o3 = req.get('origin');
+  const o4 = req.get('referer');
   console.log('DEBUG: route: google auth: state being sent to google: ');
   console.log(o1);
   console.log(o2);
@@ -15,7 +16,7 @@ router.get('/google', (req, res, next) => {
   console.log(req.headers);
   const config = {
     scope: ['email', 'profile'],
-    state: o1
+    state: o4
   }
   passport.authenticate('google', config )(req, res, next);
 });
@@ -29,7 +30,7 @@ router.get('/google/callback', getHost, authenticateWrap );
 function getHost(req, res, next) {
   // let host = req.protocol + '://' + req.get('host');
   let host = req.query.state;
-  req.auth_options = { successRedirect: host + '/', failureRedirect: host + '/' };
+  req.auth_options = { successRedirect: host + '/', failureRedirect: host };
   console.log('DEBUG: route: google auth: state received from google:  ' + req.auth_options.successRedirect);
   next();
 }
@@ -40,7 +41,8 @@ function authenticateWrap(req, res, next) {
 }
 
 function getHostAgain(req) {
-  return req.protocol + '://' + req.get('host') + '/';
+  return req.get('referer');
+  // return req.protocol + '://' + req.get('host') + '/';
 }
 
 /****************************************************************************************************/
