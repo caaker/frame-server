@@ -14,3 +14,9 @@ const session_options = {
 };
 
 module.exports = Session(session_options);
+
+// appears to do nothing
+// cookie: {
+//   secure: true,
+//   sameSite: 'None'
+// }
