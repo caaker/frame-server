@@ -1,4 +1,4 @@
-console.log('DEBUG: CORS:');
+console.log('DEBUG: Cors:');
 
 const cors = require('cors');
 
@@ -15,5 +15,3 @@ function exportCors(app) {
 }
 
 module.exports = exportCors;
-
-// , 'https://frame-server-x8qw.onrender.com'
