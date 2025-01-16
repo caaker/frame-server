@@ -10,7 +10,7 @@ const session_options = {
   name: 'livelong-0',
   secret: 'fooisfoo',
   saveUninitialized: true,
-  resave: false
+  resave: false,
   cookie: {
     secure: true
   }
