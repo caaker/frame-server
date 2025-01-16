@@ -10,10 +10,7 @@ const session_options = {
   name: 'livelong-0',
   secret: 'fooisfoo',
   saveUninitialized: true,
-  resave: false,
-  cookie: {
-    secure: true
-  }
+  resave: false
 };
 
 module.exports = Session(session_options);
@@ -22,4 +19,9 @@ module.exports = Session(session_options);
   // cookie: {
   //   secure: true,
   //   sameSite: 'None'
+  // }
+
+
+  // cookie: {
+  //   secure: true
   // }
