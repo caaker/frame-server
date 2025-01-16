@@ -11,13 +11,15 @@ const session_options = {
   secret: 'fooisfoo',
   saveUninitialized: true,
   resave: false
+  cookie: {
+    secure: true
+  }
 };
 
 module.exports = Session(session_options);
 
 
   // cookie: {
-  //   httpOnly: true,
   //   secure: true,
   //   sameSite: 'None'
   // }
