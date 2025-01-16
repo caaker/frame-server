@@ -10,12 +10,14 @@ const session_options = {
   name: 'livelong-0',
   secret: 'fooisfoo',
   saveUninitialized: true,
-  resave: false,
-  cookie: {
-    httpOnly: true,
-    secure: true,
-    sameSite: 'None'
-  }
+  resave: false
 };
 
 module.exports = Session(session_options);
+
+
+  // cookie: {
+  //   httpOnly: true,
+  //   secure: true,
+  //   sameSite: 'None'
+  // }
