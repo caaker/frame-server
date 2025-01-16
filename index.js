@@ -12,16 +12,10 @@ function time() {
 const express = require('express');
 const app = express();
  
-// GENERAL
-
-
-app.get('/test', (req, res) => {
-  console.log('Request Headers:', req.headers); // Log the headers
-  res.send('Headers inspected! Check your console for details.');
-});
+require('./mod_00_cookies')(app);
 
 // server is often behing a proxy server and we want to trust the forwarded protocol - https
-// app.enable('trust proxy');
+app.enable('trust proxy');
 
 // allow cross origin access with cors module
 require('./mod_00_cors')(app);
@@ -61,10 +55,11 @@ app.use(passport.session());
 // ROUTES
 
 const routes = require('./mod_6_routes');
-app.use('/articles', routes.articles);
-app.use('/users', routes.users);
-// app.use('/openweather', routes.openweather);
-app.use('/auth', routes.auth);
+app.use('/articles',  routes.articles);
+app.use('/users',     routes.users);
+app.use('/auth',      routes.auth);
+app.use('/test',      routes.test);
+
 
 // ERRORS
 app.use((err, req, res, next) => {
