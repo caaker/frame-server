@@ -14,6 +14,10 @@ const app = express();
  
 // GENERAL
 
+
+// server is often behing a proxy server and we want to trust the forwarded protocol - https
+app.enable('trust proxy');
+
 // allow cross origin access with cors module
 require('./mod_00_cors')(app);
 
@@ -62,8 +66,3 @@ app.use((err, req, res, next) => {
   console.error('Error occurred:', err);
   res.status(500).send('Something went wrong');
 });
-
-
-// required by heroku which is behind an ngix server; required after https upgrade
-// check for use by AWS
-// app.enable('trust proxy');
