@@ -12,7 +12,7 @@ const session_options = {
   saveUninitialized: true,
   resave: false,
   cookie: {
-
+    secure: true
   }
 };
 
