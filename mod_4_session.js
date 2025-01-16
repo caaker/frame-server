@@ -7,16 +7,15 @@ const Session = require('express-session');
 // 'resave' default is true for legacy reasons;  current recomendation is to set to false to cut down on load
 
 const session_options = {
-  name: 'livelong.ai',
+  name: 'livelong-0',
   secret: 'fooisfoo',
   saveUninitialized: true,
-  resave: false
+  resave: false,
+  cookie: {
+    httpOnly: true,
+    secure: true,
+    sameSite: 'None'
+  }
 };
 
 module.exports = Session(session_options);
-
-// appears to do nothing
-// cookie: {
-//   secure: true,
-//   sameSite: 'None'
-// }
