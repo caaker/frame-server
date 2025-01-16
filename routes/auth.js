@@ -6,8 +6,8 @@ const passport = require('passport');
 1.  First request comes from the browser
 /****************************************************************************************************/
 router.get('/google', (req, res, next) => {
-  console.log('DEBUG: routes: /auth/google:' + origin );
   const origin = req.get('referer');
+  console.log('DEBUG: routes: /auth/google:' + origin );
   const config = {
     scope: ['email', 'profile'],
     state: origin
