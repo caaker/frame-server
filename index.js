@@ -15,6 +15,11 @@ const app = express();
 // GENERAL
 
 
+app.get('/test', (req, res) => {
+  console.log('Request Headers:', req.headers); // Log the headers
+  res.send('Headers inspected! Check your console for details.');
+});
+
 // server is often behing a proxy server and we want to trust the forwarded protocol - https
 // app.enable('trust proxy');
 
