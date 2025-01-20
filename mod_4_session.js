@@ -18,16 +18,3 @@ const session_options = {
 };
 
 module.exports = Session(session_options);
-
-
-  // cookie: {
-  //   secure: true,
-  //   sameSite: 'None'
-  // }
-
-
-  // cookie: {
-  //   secure: true
-  // }
-
-// http://localhost:3000/auth/google/callback?state=http%3A%2F%2Flocalhost%3A3000%2F&code=4%2F0AanRRru3DRr3BBL0AxCf_b_phXzZJgx-hxmfowZX8QSdMrlLCyngcCCxhAnz_m9xe4k9qg&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserin
