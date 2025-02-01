@@ -7,12 +7,12 @@ const schema = require('./mongoose-schema.js');
  *
 **/
 
-exports.saveFingerPrint = (obj) => {
-  return saveOne('FingerPrint', schema.FingerPrint, obj);
-};
-
 exports.getFingerPrint = (id) => {
   return getOne('FingerPrint', schema.FingerPrint, id);
+};
+
+exports.saveFingerPrint = (obj) => {
+  return saveOne('FingerPrint', schema.FingerPrint, obj);
 };
 
 exports.updateFingerPrint = (id, obj) => {
@@ -30,12 +30,12 @@ exports.deleteFingerPrint = (id) => {
  *
 **/
 
-exports.saveArticle = (obj) => {
-  return saveOne('Article', schema.Article, obj);
-};
-
 exports.getArticle = (id) => {
   return getOne('Article', schema.Article, id);
+};
+
+exports.saveArticle = (obj) => {
+  return saveOne('Article', schema.Article, obj);
 };
 
 exports.updateArticle = (id, obj) => {
@@ -52,7 +52,7 @@ exports.getAllArticles = () => {
 
 /*
  *
- * LAYER 1 - USER METHODS - used by auth, and  route /user
+ * LAYER 1 - USER METHODS
  *
 **/
 
@@ -65,28 +65,9 @@ exports.saveUser = (obj) => {
 };
 
 
-
-
-
-
-
-
 /*
  *
- * MOVE LAYER 0 BELOW TO ANOTHER FILE
- *
-**/
-
-
-
-
-
-
-
-
-/*
- *
- * LAYER 0 - MONGOOSE - SINGLE CRUD OPERATIONS
+ * LAYER 0 - MONGOOSE - SINGLE CRUD OPERATIONS - MOVE TO ANOTHER FILE
  *
 **/
 

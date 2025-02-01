@@ -1,19 +1,14 @@
-/* implicits
-     id
-    __v
+/* 
+
+implicits - id, __v
+
 */
 
 const { Schema } = require('mongoose');
 const schema = {};
 
-schema.Chat = new Schema({
-  from:      { type: String, required: true },
-  to:        { type: String, required: true },
-  timestamp: { type: Date,   required: true, default: Date.now }
-});
-
 schema.FingerPrint = new Schema({
-  agent:     { type: String, required: true},
+  agent:     { type: String, required: true },
   timestamp: { type: Date,   required: true, default: Date.now }
 });
 
@@ -40,6 +35,12 @@ schema.Article = new Schema({
 schema.Bookmark = new Schema({
   url:       { type: String, required: true },
   timestamp: { type: Date, default: Date.now }
+});
+
+schema.Chat = new Schema({
+  from:      { type: String, required: true },
+  to:        { type: String, required: true },
+  timestamp: { type: Date,   required: true, default: Date.now }
 });
 
 module.exports = schema;

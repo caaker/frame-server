@@ -19,7 +19,10 @@ router.route('/add').post((req, res) => {
 
 // update
 router.route('/put/:_id').put((req, res) => {
+  console.log( req.body );
   DBM.updateArticle(req.params._id, req.body).then((val) => {
+    console.log('DEBUG: route: articles/put/:_id: ' + req.params._id );
+    console.log( val );
     res.status(200).json(val);
   }).catch(errorHandler);
 });
