@@ -1,21 +1,5 @@
-/*    
-
-    INTERFACE - WILD CARD
-      0.0.0.0 accepts connections on any network interface
-
-    COMMON PORT USE:
-      http                80
-      https               443
-      local               3000
-
-    NOTE:
-      the heroku proxy server will send all requests to process.env.PORT inlcuding http and https
-      const PORT = process.env.PORT || 3000;
-*/
-
 console.log('DEBUG: server:');
 const http = require('http');
-
 
 // http server
 function HTTPserver(server) {
@@ -28,7 +12,6 @@ function HTTPserver(server) {
     console.log('\x1b[32m' + 'DEBUG: server: started: port ' + port + '\x1b[30m');
   });
 }
-
 
 // local http server
 function HTTPLocalServer(server) {
@@ -52,8 +35,3 @@ function exportServer(app) {
 
 // consider sigint and sigterm handlers
 module.exports = exportServer;
-
-// does not appear useful as it fires right after listen()
-// server.on('listening', () => {
-//   console.log('\x1b[32m' + 'DEBUG: server: listening: ' + '\x1b[30m');
-// });
