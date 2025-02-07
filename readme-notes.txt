@@ -1,27 +1,35 @@
 SERVERS
 ****************************************************************************************************
-Local
-Google Callback:		local server
-Client Endpoints:		local server
+LOCAL
+client start:    browser
+google start:    local server
+                 google server
+google end:      local server
+client end:      /
 
+GITHUB
+client start:    browser
+google start:    render server
+                 google server
+google end:      render server
+client end:      /
 
-Github
-Google Callback:		render server
-Client Endpoints:		github server
+RENDER
+client start:    browser
+google start:    render server
+                 google server
+google end:      render server
+client end:      /
 
-
-Render
-Google Callback:		render server
-Client Endpoints:		render server
-
-
-MongoDB
-
-
-Google
-
-
-RESULTS
+GENERAL
 ****************************************************************************************************
-- Google callback is a simple boolean based upon local or not local for 2 use cases - local, render
-- Client endpoints are determined programatically for 3 use cases - local, github, render
+COMMON PORT USE
+http                80
+https               443
+local               3000
+
+INTERFACE
+0.0.0.0 accepts connections on any network interface
+
+NOTES
+the heroku proxy server will send all requests to process.env.PORT inlcuding http and https
