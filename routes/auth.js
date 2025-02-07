@@ -1,3 +1,5 @@
+// console.logD('DEBUG: routes: auth', 'cyan');
+
 const router = require('express').Router();
 const passport = require('passport');
 
@@ -6,7 +8,7 @@ const passport = require('passport');
 /****************************************************************************************************/
 router.get('/google', (req, res, next) => {
   const origin = req.get('referer');
-  console.log('DEBUG: routes: /auth/google: ');
+  console.logD('DEBUG: routes: /auth/google: ', 'blue');
   const config = {
     scope: ['email', 'profile'],
     state: origin
@@ -20,7 +22,7 @@ router.get('/google', (req, res, next) => {
 router.get('/google/callback', getHost, authenticateWrap );
 function getHost(req, res, next) {
   const host = req.query.state;
-  console.log('DEBUG: routes: /auth/google/callback: ');
+  console.logD('DEBUG: routes: /auth/google/callback: ', 'blue');
   req.auth_options = { successRedirect: host, failureRedirect: host };
   next();
 }
@@ -33,7 +35,7 @@ a.  logout
 /****************************************************************************************************/
 router.get('/logout', (req, res) => {
   const referer = req.get('referer');
-  console.log('DEBUG: routes: /auth/logout: ' + referer);
+  console.logD('DEBUG: routes: /auth/logout: ', 'blue');
   req.logout(() => {});
   res.redirect(referer);
 });

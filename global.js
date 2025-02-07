@@ -1,0 +1,21 @@
+global.console.logD = function(arg1, arg2) {
+  const on = true;
+  if (on) {
+
+    const colorCodes = {
+      blue: '\x1b[34m',
+      red: '\x1b[31m',
+      green: '\x1b[32m',
+      yellow: '\x1b[33m',
+      cyan: '\x1b[36m',
+      magenta: '\x1b[35m',
+      white: '\x1b[37m',
+      reset: '\x1b[0m'
+    };
+
+    let colorCode = colorCodes[arg2 || 'blue'] 
+    let resetCode = colorCodes['reset'];
+
+    console.log(colorCode + arg1 + resetCode);
+  }
+};

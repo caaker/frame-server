@@ -9,9 +9,9 @@ const connection_params = {
 };
 
 mongoose.connect(connection_string, connection_params).then(() => {
-  console.log('\x1b[32m' + 'DEBUG: mongoose: connected: ' + connection_string + '\x1b[30m');
+  console.logD('DEBUG: mongoose: connected: ', 'green');
 }).catch((err) => {
-  console.error('DEBUG: mongoose: not connected: ' + connection_string);
+  console.logD('DEBUG: mongoose: error: not connected: ', 'red');
 });
 
 module.exports = mongoose;

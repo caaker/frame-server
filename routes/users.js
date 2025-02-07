@@ -1,3 +1,5 @@
+// console.logD('DEBUG: routes: users', 'cyan');
+
 const express = require('express');
 const router = express.Router();
 

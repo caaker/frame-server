@@ -1,3 +1,5 @@
+// console.logD('DEBUG: routes: articles', 'cyan');
+
 const router = require('express').Router();
 const DBM = require('../mongo/mongoose');
 
