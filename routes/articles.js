@@ -3,25 +3,22 @@
 const router = require('express').Router();
 const DBM = require('../mongo/mongoose');
 
-// read
 router.route('/get').get((req, res) => {
-  // console.log('DEBUG: route:' + req.hostname);
+  console.logD('DEBUG: routes: /articles/get: ', 'blue');
   DBM.getAllArticles().then( (results) => {
-    // console.log('DEBUG: route: articles: getAllArticles: length: ' + results.length);
     res.status(200).json(results);
   }).catch(errorHandler);
 });
 
-// create
 router.route('/add').post((req, res) => {
+  console.logD('DEBUG: routes: /articles/add: ', 'blue');
   DBM.saveArticle(req.body).then((val) => {
     res.status(200).json(val);
   }).catch(errorHandler);
 });
 
-// update
 router.route('/put/:_id').put((req, res) => {
-  console.log( req.body );
+  console.logD('DEBUG: routes: /articles/put: ', 'blue');
   DBM.updateArticle(req.params._id, req.body).then((val) => {
     console.log('DEBUG: route: articles/put/:_id: ' + req.params._id );
     console.log( val );
@@ -29,8 +26,8 @@ router.route('/put/:_id').put((req, res) => {
   }).catch(errorHandler);
 });
 
-// delete
 router.route('/delete/:_id').delete((req, res) => {
+  console.logD('DEBUG: routes: /articles/delete: ', 'blue');
   DBM.deleteArticle(req.params._id).then((val) => {
     res.status(200).json(val);
   }).catch(errorHandler);
@@ -42,7 +39,3 @@ function errorHandler(err) {
 }
 
 module.exports = router;
-
-
-
-

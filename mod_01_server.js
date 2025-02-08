@@ -9,7 +9,7 @@ function HTTPserver(server) {
       console.error('DEBUG: Error starting server module');
       process.exit(1);     
     }
-    console.log('\x1b[32m' + 'DEBUG: server: started: port ' + port + '\x1b[30m');
+    console.logD('DEBUG: server: started: port ' + port, 'green');
   });
 }
 
@@ -21,7 +21,7 @@ function HTTPLocalServer(server) {
       console.error('DEBUG: Error starting local server module');
       process.exit(1);     
     }
-    console.log('\x1b[32m' + 'DEBUG: local server: started: port ' + port + '\x1b[30m');
+    console.logD('DEBUG: local server: started: port ' + port, 'green');
   });
 }
 

@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 // getOrSaveUser is called once per authenticatin attempt
 function getOrSaveUser(accessToken, refreshToken, profile, done) {
-  console.log('DEBUG: passport_helper: getOrSaveUser: mongoose.connection.readyState: ' + mongoose.connection.readyState);
+  // console.log('DEBUG: passport_helper: getOrSaveUser: mongoose.connection.readyState: ' + mongoose.connection.readyState);
   const props = filterGoogleProps(profile);
   database.getUser(props.id_google).then( (response) => {
     if(response[0]) {

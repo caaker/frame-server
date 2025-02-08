@@ -1,4 +1,5 @@
 require('./global');
+require('./all_shutdown');
 
 console.log('----------------------------------------------------------------------------------------------------');
 console.log('                                         STARTING                                                   ');
@@ -64,6 +65,7 @@ app.use('/test',      routes.test);
 
 
 // ERRORS
+
 app.use((err, req, res, next) => {
   console.error('Error occurred:', err);
   res.status(500).send('Something went wrong');
