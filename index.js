@@ -1,5 +1,5 @@
 require('./global');
-require('./all_shutdown');
+require('./all_shutdown')();
 
 console.log('----------------------------------------------------------------------------------------------------');
 console.log('                                         STARTING                                                   ');

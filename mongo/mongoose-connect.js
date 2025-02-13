@@ -13,5 +13,3 @@ mongoose.connect(connection_string, connection_params).then(() => {
 }).catch((err) => {
   console.logD('DEBUG: mongoose: error: not connected: ', 'red');
 });
-
-module.exports = mongoose;

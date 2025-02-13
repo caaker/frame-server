@@ -1,5 +1,7 @@
-const mongoose = require('./mongoose-connect');
-const schema = require('./mongoose-schema.js');
+const mongoose =  require('mongoose');
+const schema =    require('./mongoose-schema.js');
+
+require('./mongoose-connect');
 
 /*
  *

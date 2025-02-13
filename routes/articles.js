@@ -33,9 +33,8 @@ router.route('/delete/:_id').delete((req, res) => {
   }).catch(errorHandler);
 });
 
-// will catch errors when there is no connection, need to move this
 function errorHandler(err) {
-  console.error('DEBUG: routes: articles: error ');
+  console.logD('DEBUG: routes: articles crud: error:', 'red');
 }
 
 module.exports = router;

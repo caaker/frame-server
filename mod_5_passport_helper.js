@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 
 // getOrSaveUser is called once per authenticatin attempt
 function getOrSaveUser(accessToken, refreshToken, profile, done) {
-  // console.log('DEBUG: passport_helper: getOrSaveUser: mongoose.connection.readyState: ' + mongoose.connection.readyState);
   const props = filterGoogleProps(profile);
   database.getUser(props.id_google).then( (response) => {
     if(response[0]) {
@@ -12,8 +11,12 @@ function getOrSaveUser(accessToken, refreshToken, profile, done) {
     } else {
       saveUser(done, props);
     }
-  }).catch(error => done(error));
+  }).catch((error) => {
+    console.logD("DEBUG: passport_helper: getOrSaveUser:", 'red');
+    done(error, null, "DEBUG: passport_helper: getOrSaveUser:" );
+  });
 }
+
 function userFound(done, props) {
   console.log('DEBUG: passport: user found in the database: ');
   done(null, props);
@@ -34,14 +37,14 @@ function filterGoogleProps(profile) {
   return props;
 }
 
-//    serialized and deserialize functions
+// serialized and deserialize functions
 function serialize(profile, done) {
-  console.log('DEBUG: passport: user serialized: id: ' + profile.id_google);
+  // console.log('DEBUG: passport: user serialized: id: ' + profile.id_google);
   done(null, profile.id_google);
 }
 function deserialize(id_google, done) {
   database.getUser(id_google).then((res) => {
-    console.log('DEBUG: passport: user deserialized: id: ' + id_google);
+    // console.log('DEBUG: passport: user deserialized: id: ' + id_google);
     done(null, res[0]);
   });
 }
@@ -52,3 +55,6 @@ module.exports = {
   deserialize,
   serialize
 };
+
+
+// console.log('DEBUG: passport_helper: getOrSaveUser: mongoose.connection.readyState: ' + mongoose.connection.readyState);

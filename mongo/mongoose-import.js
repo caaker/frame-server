@@ -14,7 +14,8 @@ async function parseFile(contents) {
 
 // loop through this array and save each object to the database
 async function loopThroughData(array) {
-  for( let i = array.length ; i-- ; i >= 0) {
+  let i
+  for( i = array.length; i >= 0 ; i-- ) {
     await saveToDB(i, array[i]);
   }
 }
