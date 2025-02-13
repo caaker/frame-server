@@ -20,8 +20,7 @@ router.route('/add').post((req, res) => {
 router.route('/put/:_id').put((req, res) => {
   console.logD('DEBUG: routes: /articles/put: ', 'blue');
   DBM.updateArticle(req.params._id, req.body).then((val) => {
-    console.log('DEBUG: route: articles/put/:_id: ' + req.params._id );
-    console.log( val );
+    console.logD( val, 'blue' );
     res.status(200).json(val);
   }).catch(errorHandler);
 });
@@ -35,6 +34,7 @@ router.route('/delete/:_id').delete((req, res) => {
 
 function errorHandler(err) {
   console.logD('DEBUG: routes: articles crud: error:', 'red');
+  // console.logD(error);
 }
 
 module.exports = router;
