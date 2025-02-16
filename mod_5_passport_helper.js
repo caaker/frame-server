@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 // getOrSaveUser is called once per authenticatin attempt
 function getOrSaveUser(accessToken, refreshToken, profile, done) {
   const props = filterGoogleProps(profile);
+  console.log(profile);
+  console.log(props);
   database.getUser(props.id_google).then( (response) => {
     if(response[0]) {
       userFound(done, props);
@@ -39,12 +41,10 @@ function filterGoogleProps(profile) {
 
 // serialized and deserialize functions
 function serialize(profile, done) {
-  // console.log('DEBUG: passport: user serialized: id: ' + profile.id_google);
   done(null, profile.id_google);
 }
 function deserialize(id_google, done) {
   database.getUser(id_google).then((res) => {
-    // console.log('DEBUG: passport: user deserialized: id: ' + id_google);
     done(null, res[0]);
   });
 }
@@ -55,6 +55,3 @@ module.exports = {
   deserialize,
   serialize
 };
-
-
-// console.log('DEBUG: passport_helper: getOrSaveUser: mongoose.connection.readyState: ' + mongoose.connection.readyState);
