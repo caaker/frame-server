@@ -1,4 +1,4 @@
-console.log('DEBUG: Cors:');
+console.logD('DEBUG: Cors:');
 
 const cors = require('cors');
 

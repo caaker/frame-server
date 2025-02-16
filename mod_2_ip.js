@@ -1,4 +1,4 @@
-console.log('DEBUG: IP:');
+console.logD('DEBUG: IP:');
 
 function ipexport(app) {
   app.use((req, res, next) => {

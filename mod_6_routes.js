@@ -1,4 +1,4 @@
-console.log('DEBUG: routes:');
+console.logD('DEBUG: routes:');
 
 module.exports.articles =         require('./routes/articles');
 module.exports.auth =             require('./routes/auth');

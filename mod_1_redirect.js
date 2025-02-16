@@ -1,4 +1,4 @@
-console.log('DEBUG: HTTPSredirect:');
+console.logD('DEBUG: HTTPSredirect:');
 
 // required after upgrade to https
 function HTTPSredirect(app) {

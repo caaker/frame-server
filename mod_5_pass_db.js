@@ -1,7 +1,7 @@
-console.log('DEBUG: passport_helper:');
+console.logD('DEBUG: pass_db:');
 
 const database = require('./mongo/mongoose');
-const { getProps, serialize } = require('./mod_5_passport_helper_helper');
+const { getProps, serialize } = require('./mod_5_pass_helper');
 
 function getOrSaveUser(accessToken, refreshToken, profile, done) {
   const props = getProps(profile);

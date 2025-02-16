@@ -1,10 +1,10 @@
 require('./global');
 require('./mod_00_shutdown')();
 
-console.log('----------------------------------------------------------------------------------------------------');
-console.log('                                         STARTING                                                   ');
-console.log('----------------------------------------------------------------------------------------------------');
-console.log('DEBUG: index.js: time: ' + time());
+console.logD('----------------------------------------------------------------------------------------------------');
+console.logD('                                         STARTING                                                   ');
+console.logD('----------------------------------------------------------------------------------------------------');
+console.logD('DEBUG: index.js: time: ' + time());
 
 const express = require('express');
 const app = express();
@@ -45,7 +45,7 @@ app.use(session_instance);
 // PASSPORT
 
 // consider pure implementation of google authentication
-const passport = require('./mod_5_passport');
+const passport = require('./mod_5_pass');
 app.use(passport.initialize());
 app.use(passport.session());
 

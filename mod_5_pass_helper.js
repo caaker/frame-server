@@ -1,4 +1,4 @@
-console.log('DEBUG: passport_helper_helper:');
+console.logD('DEBUG: pass_helper:');
 
 function getProps(profile) {
   const props = {};

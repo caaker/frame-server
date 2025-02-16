@@ -1,4 +1,4 @@
-console.log('DEBUG: server:');
+console.logD('DEBUG: server:');
 
 /*
   render has a proxy server that terminates https and sends data as http

@@ -1,4 +1,5 @@
-console.log('DEBUG: session:');
+console.logD('DEBUG: session:');
+
 const Session = require('express-session');
 const MongoStore = require("connect-mongo");
 

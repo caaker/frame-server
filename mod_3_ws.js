@@ -1,12 +1,5 @@
-/*
-Ideally this file only handles:
-  Starting the websocket server
-  Opening weboscket connections
-  Closing weboscket connections
-  Routing messages
-*/
+console.logD('DEBUG: websocket:');
 
-console.log('DEBUG: websocket:');
 const WebSocket = require('ws');
 const User = require('./websocket/ws-user');
 
