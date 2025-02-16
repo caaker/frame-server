@@ -21,6 +21,7 @@ GOOGLE AUTH STEPS
 
 - final 302-redirect is from render server to render server pass or fail paths
 
+
 GENERAL
 ****************************************************************************************************
 COMMON PORT USE
