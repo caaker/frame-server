@@ -1,5 +1,5 @@
 require('./global');
-require('./all_shutdown')();
+require('./mod_00_shutdown')();
 
 console.log('----------------------------------------------------------------------------------------------------');
 console.log('                                         STARTING                                                   ');
