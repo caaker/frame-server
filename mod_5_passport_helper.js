@@ -1,17 +1,12 @@
 console.log('DEBUG: passport_helper:');
+
 const database = require('./mongo/mongoose');
-const mongoose = require('mongoose');
 const { getProps, serialize } = require('./mod_5_passport_helper_helper');
 
-// getOrSaveUser is called once per authenticatin attempt
 function getOrSaveUser(accessToken, refreshToken, profile, done) {
   const props = getProps(profile);
   database.getUser(props.id_google).then( (response) => {
-    if(response[0]) {
-      userFound(done, props);
-    } else {
-      saveUser(done, props);
-    }
+    response[0] ? userFound(done, props) : saveUser(done, props);
   }).catch((error) => {
     console.logD("DEBUG: passport_helper: getOrSaveUser:", 'red');
     done(error, null, "DEBUG: passport_helper: getOrSaveUser:" );
