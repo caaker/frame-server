@@ -6,12 +6,6 @@ console.log('                                         STARTING                  
 console.log('----------------------------------------------------------------------------------------------------');
 console.log('DEBUG: index.js: time: ' + time());
 
-function time() {
-  const date = new Date();
-  const time = date.toLocaleTimeString();  
-  return time;
-}
-
 const express = require('express');
 const app = express();
  

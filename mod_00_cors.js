@@ -4,7 +4,8 @@ const cors = require('cors');
 
 function exportCors(app) {
 
-  // configure CORS for a specific domain - current origin is implied - https://frame-server-x8qw.onrender.com/
+  // configure CORS for a specific domains - current origin is implied - https://frame-server-x8qw.onrender.com/
+  // support all CRUD operations
   const corsOptions = {
     origin: ['https://caaker.github.io', 'http://localhost:3000'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
@@ -15,6 +16,3 @@ function exportCors(app) {
 }
 
 module.exports = exportCors;
-
-
-// allowedHeaders: ['Content-Type', 'Authorization'],

@@ -2,7 +2,7 @@ console.log('DEBUG: server:');
 
 /*
   render and heroku have a proxy server that terminates https and sends data as http
-  render detects port via $PORT
+  render detects port via $PORT and also other ways
 */
 
 const http = require('http');
