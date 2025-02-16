@@ -9,7 +9,7 @@ function ipexport(app) {
     // ip address directly from the request socket if there is no proxy this will be correct
     const ip2 = req.socket.remoteAddress;
 
-    // later we will log this, currently not used fool
+    // later we will log this, currently not used
     const ip =  ip1 || ip2;
     next();
   });

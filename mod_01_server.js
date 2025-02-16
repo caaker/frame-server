@@ -1,8 +1,8 @@
 console.log('DEBUG: server:');
 
 /*
-  render and heroku have a proxy server that terminates https and sends data as http
-  render detects port via $PORT and also other ways
+  render has a proxy server that terminates https and sends data as http
+  render detects port via process.env.PORT among other ways
 */
 
 const http = require('http');
@@ -19,7 +19,8 @@ function startServer(server, port, name) {
 
 function exportServer(app) {
   const server = http.createServer(app);
-  startServer(server, 3000, 'local');
+  const port = process.env.PORT || 3000;
+  startServer(server, port, 'local');
   return server;
 }
 

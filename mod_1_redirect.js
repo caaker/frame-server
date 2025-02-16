@@ -3,8 +3,9 @@ console.log('DEBUG: HTTPSredirect:');
 // required after upgrade to https
 function HTTPSredirect(app) {
 
-  //  this is set in heroku
-  if(process.env.NODE_ENV === 'production') {
+  //  NODE_ENV is set by the server enviornment, toggle for testing
+  const toggle = false;
+  if(toggle || process.env.NODE_ENV === 'production') {
 
     // we will check all requests
     app.use((req, res, next) => {

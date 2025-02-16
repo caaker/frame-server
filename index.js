@@ -11,7 +11,7 @@ const app = express();
  
 require('./mod_00_cookies')(app);
 
-// server is often behing a proxy server and we want to trust the forwarded protocol - https
+// server is often behind a proxy server and we want to trust it
 app.enable('trust proxy');
 
 // allow cross origin access with cors module
