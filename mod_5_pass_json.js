@@ -7,7 +7,7 @@ const path_file = path.join(__dirname, 'users.json');
 
 function readFile() {
   if (!fs.existsSync(path_file)) {
-    fs.writeFileSync(path_file, JSON.stringify([])); // Create an empty file if it doesn't exist
+    fs.writeFileSync(path_file, JSON.stringify([]));
   }
   return JSON.parse(fs.readFileSync(path_file));
 }

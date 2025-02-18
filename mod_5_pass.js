@@ -4,8 +4,11 @@ const mongoose = require('mongoose');
 const Passport = require('passport');
 const GoogleAuth = require('passport-google-oauth').OAuth2Strategy;
 
-// const { getOrSaveUser, serialize, deserialize } = require('./mod_5_pass_db');
-const { getOrSaveUser, serialize, deserialize } = require('./mod_5_pass_json');  
+if(process.env.NODE_ENV === 'production') {
+  const { getOrSaveUser, serialize, deserialize } = require('./mod_5_pass_db');
+} else {
+  const { getOrSaveUser, serialize, deserialize } = require('./mod_5_pass_json');    
+}
 
 let connection_string;
 if (process.env.PASSPORT) {
