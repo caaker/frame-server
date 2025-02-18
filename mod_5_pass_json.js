@@ -20,8 +20,6 @@ function getOrSaveUser(accessToken, refreshToken, profile, done) {
   const props = getProps(profile);
   const users = readFile();
   const user_found = users.find(user => user.id_google === props.id_google);
-  // console.log('DEBUG: pass_json: getOrSaveUser: ');
-  // console.log(user_found);
   user_found ? done(null, user_found) : saveUser(done, props);
 }
 
@@ -32,11 +30,11 @@ function saveUser(done, props) {
   done(null, props);
 }
 
+// req.user is populated here
 function deserialize(id_google, done) {
   const users = readFile();
   const user_found = users.find(user => user.id_google === id_google);
   console.log('DEBUG: pass_json: deserialize: ');
-  console.log(user_found);
   if (user_found) {
     done(null, user_found);
   } else {

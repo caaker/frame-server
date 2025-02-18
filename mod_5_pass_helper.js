@@ -15,6 +15,7 @@ function userFound(done, props) {
 }
 
 function serialize(profile, done) {
+  console.log('DEBUG: pass_help: serialize: ');
   done(null, profile.id_google);
 }
 
