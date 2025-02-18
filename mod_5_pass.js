@@ -5,9 +5,9 @@ const Passport = require('passport');
 const GoogleAuth = require('passport-google-oauth').OAuth2Strategy;
 
 if(process.env.NODE_ENV === 'production') {
-  const { getOrSaveUser, serialize, deserialize } = require('./mod_5_pass_db');
+  var { getOrSaveUser, serialize, deserialize } = require('./mod_5_pass_db');
 } else {
-  const { getOrSaveUser, serialize, deserialize } = require('./mod_5_pass_json');    
+  var { getOrSaveUser, serialize, deserialize } = require('./mod_5_pass_json');    
 }
 
 let connection_string;
