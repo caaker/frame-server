@@ -24,7 +24,7 @@ const session_options = {
   cookie: {
 
     // required for cors
-    secure: true,
+    secure: process.env.NODE_ENV === 'production',
     sameSite: 'None',
 
     // default but setting explicity so cookie persists the length of the browser
