@@ -1,4 +1,4 @@
-console.log('DEBUG: pass_json:');
+console.logD('DEBUG: passport_json:');
 const fs = require('fs');
 const path = require('path');
 const { getProps, serialize } = require('./mod_5_pass_helper');

@@ -1,4 +1,4 @@
-console.logD('DEBUG: pass:');
+console.logD('DEBUG: passport:');
 
 const mongoose = require('mongoose');
 const Passport = require('passport');

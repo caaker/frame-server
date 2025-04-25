@@ -34,6 +34,14 @@ require('./mod_2_ip')(app);
 // required to populate req.body when it comes in as JSON
 app.use(express.json());
 
+
+app.use((req, res, next) => {
+  if (req.method === 'GET' && req.path !== '/') {
+    console.logD(`DEBUG: serving static files: ${req.path}`, 'yellow');
+  }
+  next();
+});
+
 // serves index.html and other static data
 app.use('/', express.static('./dist'));
 

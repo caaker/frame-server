@@ -1,4 +1,4 @@
-console.logD('DEBUG: CookieParser:');
+console.logD('DEBUG: cookieparser:');
 
 const cookieParser = require('cookie-parser');
 
