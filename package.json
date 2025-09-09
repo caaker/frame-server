@@ -1,4 +1,4 @@
-np{
+{
   "scripts": {
     "server": "node index.js",
     "server-dev": "nodemon index.js"
