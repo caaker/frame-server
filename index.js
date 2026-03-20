@@ -2,7 +2,7 @@ require('./global');
 require('./mod_00_shutdown')();
 
 console.logD('----------------------------------------------------------------------------------------------------');
-console.logD('                                         STARTING                                                   ');
+console.logD('                                         STARTING-0                                                 ');
 console.logD('----------------------------------------------------------------------------------------------------');
 console.logD('DEBUG: index.js: time: ' + time());
 
