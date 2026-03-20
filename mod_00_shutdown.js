@@ -1,18 +1,8 @@
-// shutdownHandler.js
-
-function handleShutdown() {
-
-  // control C
-  process.on("SIGINT", () => {
-    console.logD('DEBUG: server: closed: ( SIGINT ) ', 'green');
-    process.exit();
-  });
-
-  // used by render
-  process.on("SIGTERM", () => {
-    console.logD('DEBUG: server: closed: ( SIGTERM ) ', 'green');
-    process.exit();
-  });
-}
-
-module.exports = handleShutdown;
+module.exports = (server) => {
+  const exit = () => {
+    console.logD('DEBUG: server: closing...', 'green');
+    server.close(() => process.exit(0));
+  };
+  process.on('SIGINT', exit);
+  process.on('SIGTERM', exit);
+};
