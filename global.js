@@ -1,24 +1,12 @@
-global.console.logD = function(arg1, arg2) {
-  const on = true;
-  if (on) {
-    const colors_hash = {
-      blue: '\x1b[34m',
-      red: '\x1b[31m',
-      green: '\x1b[32m',
-      yellow: '\x1b[33m',
-      cyan: '\x1b[36m',
-      magenta: '\x1b[35m',
-      white: '\x1b[37m',
-      black: '\x1b[30m'
-    };
-    const start_string = colors_hash[arg2] || colors_hash.blue;
-    const end_string = '\x1b[0m';
-    console.log(start_string + arg1 + end_string);
-  }
+const DEBUG_ON = true;
+
+// similar to visible spectrum
+const colors = { black: 30, red: 31, green: 32, yellow: 33, blue: 34, magenta: 35, cyan: 36, white: 37 };
+
+global.console.logD = (msg, color = 'blue') => {
+  if (!DEBUG_ON) return;
+  const code = colors[color] || 34;
+  console.log(`\x1b[${code}m${msg}\x1b[0m`);
 };
 
-global.time = function () {
-  const date = new Date();
-  const time = date.toLocaleTimeString();  
-  return time;
-}
+global.time = () => new Date().toLocaleTimeString();

@@ -2,7 +2,7 @@ require('./global');
 require('./mod_00_shutdown')();
 
 console.logD('----------------------------------------------------------------------------------------------------');
-console.logD('                                         STARTING-2                                                 ');
+console.logD('                                         STARTING-3                                                 ');
 console.logD('----------------------------------------------------------------------------------------------------');
 console.logD('DEBUG: index.js: time: ' + time());
 console.logD('DEBUG: current node version: ' + process.version);
