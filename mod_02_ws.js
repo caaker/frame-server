@@ -7,10 +7,10 @@ let ws_server;
 
 export default function websocket(server) {
   ws_server = new WebSocketServer({ server });
-  ws_server.on('connection', clientConnected);
+  ws_server.on('connection', clientConnection);
 }
 
-function clientConnected(socket) {
+function clientConnection(socket) {
   User.clientConnected(socket);
   socket.on('message', (json) => routeMessage(json, socket));
   socket.on('close', () => clientClosed(socket));
