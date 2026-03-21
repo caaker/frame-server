@@ -1,8 +1,7 @@
 import { getClientID } from './ws-user-id.js';
-
 const users = new Map();
 
-export const clientConnected = function(socket) {
+const clientConnected = (socket) => {
   const id = getClientID();
   socket._id = id;
   const user_object = {
@@ -11,12 +10,10 @@ export const clientConnected = function(socket) {
   };
   users.set(id, user_object);
 };
-
-export const clientClosed = function(socket) {
+const clientClosed = (socket) => {
   users.delete(socket._id);
 };
-
-export const receivedFingerPrint = function(socket, obj) {
+const receivedFingerPrint = (socket, obj) => {
   const id = socket._id;
   const user_object = {
     id: id,
@@ -26,11 +23,16 @@ export const receivedFingerPrint = function(socket, obj) {
   users.set(id, user_object);
   sendObject(user_object, socket);
 };
-
-export const receivedEcho = function(socket, obj) {
+const receivedEcho = (socket, obj) => {
   sendObject(obj.message, socket);
 };
-
-function sendObject(obj, socket) {
+const sendObject = (obj, socket) => {
   socket.send(JSON.stringify(obj));
-}
+};
+
+export {
+  clientConnected,
+  clientClosed,
+  receivedFingerPrint,
+  receivedEcho
+};
