@@ -1,8 +1,3 @@
-// use node http to create a server
-const server = require('./mod_01_server')(app);
-
-// used to create a websockets server from the server
-require('./mod_3_ws')(server);
 
 // redirect http requests to https
 require('./mod_1_redirect')(app);

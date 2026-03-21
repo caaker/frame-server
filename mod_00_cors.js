@@ -1,18 +1,15 @@
-console.logD('DEBUG: CORS:');
+import cors from 'cors';
 
-const cors = require('cors');
-
-function exportCors(app) {
-
-  // configure CORS for a specific domains - current origin is implied - https://frame-server-x8qw.onrender.com/
-  // support all CRUD operations
+export const configureCORS = (app) => {
   const corsOptions = {
-    origin: ['https://chris-temp-level-0.github.io', 'https://caaker.github.io', 'http://localhost:3000'],
+    origin: [
+      'https://chris-temp-level-0.github.io', 
+      'https://caaker.github.io', 
+      'http://localhost:3000'
+    ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
   };
   app.use(cors(corsOptions));
-}
-
-module.exports = exportCors;
+};
