@@ -1,7 +1,5 @@
-console.logD('DEBUG: session:');
-
-const Session = require('express-session');
-const MongoStore = require("connect-mongo");
+import session from 'express-session';
+console.log('DEBUG: session:');
 
 const session_options = {
 
@@ -29,13 +27,7 @@ const session_options = {
 
     // default but setting explicity so cookie persists the length of the browser
     maxAge: null
-  },
-
-  // store: MongoStore.create({
-  //   mongoUrl: process.env.MONGO || 'mongodb://127.0.0.1:27017/myapp',
-  //   collectionName: "sessions",
-  // }),
-
+  }
 };
 
-module.exports = Session(session_options);
+export const session_instance = session(session_options);

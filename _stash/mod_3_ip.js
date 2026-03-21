@@ -1,6 +1,6 @@
 console.logD('DEBUG: IP:');
 
-function ipexport(app) {
+export function logIP(app) {
   app.use((req, res, next) => {
 
     // x-forwarded-for is often populated by a proxy server to hold the real clients ip address
@@ -10,9 +10,11 @@ function ipexport(app) {
     const ip2 = req.socket.remoteAddress;
 
     // later we will log this, currently not used
-    const ip =  ip1 || ip2;
+    const ip = ip1 || ip2;
+
+    // this should have the same value as req.ip, because we trust proxy, but we will log to compare
+    req.visitorIP = ip;
+  
     next();
   });
 }
-
-module.exports = ipexport;

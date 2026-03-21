@@ -1,24 +1,24 @@
 import './global.js';
-
-import { cofigureShutdown } from './mod_00_shutdown.js';
-cofigureShutdown();
-
-console.logD('---------*---------*---------*---------*---------*---------*---------*---------*---------*---------*');
-console.logD('DEBUG: index.js: time: ' + time());
-console.logD('DEBUG: current node version: ' + process.version);
-
 import express from 'express';
+import { configureShutdown } from './mod_00_shutdown.js';
+import { configureCORS } from './mod_00_cors.js';
+import { startServer } from './mod_01_server.js';
+import { startWebsocketServer } from './mod_02_ws.js';
+import { configureRedirect } from './mod_01_redirect.js';
+import { session_instance } from './mod_4_session.js';
+
+configureShutdown();
 const app = express();
 app.enable('trust proxy');
-
-import { configureCORS } from './mod_00_cors.js';
 configureCORS(app);
-import { startServer } from './mod_01_server.js';
+configureRedirect(app);
 const server = startServer(app);
-
-import { startWebsocketServer } from './mod_02_ws.js';
 startWebsocketServer(server);
 
-import { configureRedirect } from './mod_01_redirect.js';
-configureRedirect(app);
+app.use(express.json());
+app.use('/', express.static('./dist'));
+app.use(session_instance);
 
+// const passport = require('./mod_5_pass');
+// app.use(passport.initialize());
+// app.use(passport.session());
