@@ -1,9 +1,3 @@
-// server is often behind a proxy server and we want to trust it
-app.enable('trust proxy');
-
-// allow cross origin access with cors module
-require('./mod_00_cors')(app);
-
 // use node http to create a server
 const server = require('./mod_01_server')(app);
 

@@ -1,4 +1,4 @@
-module.exports = (server) => {
+export const shutdown = (server) => {
   const exit = () => {
     console.logD('DEBUG: server: closing...', 'green');
     server.close(() => process.exit(0));
