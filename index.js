@@ -1,4 +1,4 @@
-import './global.js'
+require('./global');
 
 require('./mod_00_shutdown')();
 
@@ -11,7 +11,7 @@ console.logD('DEBUG: current node version: ' + process.version);
 const express = require('express');
 const app = express();
  
-require('./mod_00_cookies')(app);
+// require('./mod_00_cookies')(app);
 
 // server is often behind a proxy server and we want to trust it
 app.enable('trust proxy');
