@@ -1,7 +1,5 @@
 let iter = 0;
 
-function getID() {
+export function getClientID() {
   return iter++;
 }
-
-module.exports = getID;

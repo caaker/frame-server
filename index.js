@@ -16,9 +16,9 @@ configureCORS(app);
 import { startServer } from './mod_01_server.js';
 const server = startServer(app);
 
-import { startWebsocketServer } from './mod_3_ws';
+import { startWebsocketServer } from './mod_3_ws.js';
 startWebsocketServer(server);
 
-import { configureRedirect } from './mod_1_redirect';
+import { configureRedirect } from './mod_01_redirect.js';
 configureRedirect(app);
 
