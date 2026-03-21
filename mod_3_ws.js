@@ -1,7 +1,7 @@
 console.logD('DEBUG: websocket:', 'green');
 
 import { WebSocketServer } from 'ws';
-import User from './websocket/ws-user.js';
+import { clientConnected, clientClosed } from  './websocket/ws-user.js';
 
 let ws_server;
 
