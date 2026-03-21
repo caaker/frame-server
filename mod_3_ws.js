@@ -1,41 +1,37 @@
-console.logD('DEBUG: websocket:');
+console.logD('DEBUG: websocket:', 'green');
 
-const WebSocket = require('ws');
-const User = require('./websocket/ws-user');
+import { WebSocketServer } from 'ws';
+import User from './websocket/ws-user.js';
 
-// starts a websocket server and listens for connection events
-function websocket(server) {
-  // console.log('\x1b[32m' + 'DEBUG: websocket: server started' + '\x1b[30m');
-  ws_server = new WebSocket.Server({ server });
+let ws_server;
+
+export default function websocket(server) {
+  ws_server = new WebSocketServer({ server });
   ws_server.on('connection', clientConnected);
 }
 
-// on a connection event listen for message events and close events
 function clientConnected(socket) {
   User.clientConnected(socket);
   socket.on('message', (json) => routeMessage(json, socket));
   socket.on('close', () => clientClosed(socket));
 }
 
-// close event
 function clientClosed(socket) {
   User.clientClosed(socket);
 }
 
-// route message events based on the type property in the message
 function routeMessage(json, socket) {
-  const obj = JSON.parse(json);
-
-  if(obj.type === 'fingerprint') {
-    User.receivedFingerPrint(socket, obj);
-    return;
+  try {
+    const obj = JSON.parse(json);
+    if (obj.type === 'fingerprint') {
+      User.receivedFingerPrint(socket, obj);
+      return;
+    }  
+    if (obj.type === 'echo') {
+      User.receivedEcho(socket, obj);
+      return;
+    }
+  } catch (err) {
+    console.error('DEBUG: Failed to parse WebSocket message:', err);
   }
-
-  if(obj.type === 'echo') {
-    User.receivedEcho(socket, obj);
-    return;
-  }
-
 }
-
-module.exports = websocket;
