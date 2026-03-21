@@ -1,1 +1,3 @@
 ... prefer arrow functions and eof exports ...
+
+we prefer arrow functions becasue we define functions before they are used and don't need hoisting
