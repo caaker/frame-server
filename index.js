@@ -6,6 +6,7 @@ import { startServer } from './mod_01_server.js';
 import { startWebsocketServer } from './mod_02_ws.js';
 import { configureRedirect } from './mod_01_redirect.js';
 import { session_instance } from './mod_4_session.js';
+import { passport } from './mod_5_pass';
 
 configureShutdown();
 const app = express();
@@ -18,7 +19,5 @@ startWebsocketServer(server);
 app.use(express.json());
 app.use('/', express.static('./dist'));
 app.use(session_instance);
-
-// const passport = require('./mod_5_pass');
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());

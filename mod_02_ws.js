@@ -11,7 +11,7 @@ export default function websocket(server) {
 }
 
 function clientConnection(socket) {
-  User.clientConnected(socket);
+  clientConnected(socket);
   socket.on('message', (json) => routeMessage(json, socket));
   socket.on('close', () => clientClosed(socket));
 }

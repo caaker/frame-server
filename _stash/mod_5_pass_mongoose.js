@@ -1,5 +1,3 @@
-const mongoose = require('mongoose');
-
 mongoose.connection.on('connecting', () => {
   console.logD('DEBUG: mongoose: connecting', 'cyan');
 });

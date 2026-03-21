@@ -1,14 +1,7 @@
 console.logD('DEBUG: passport:');
-
-const mongoose = require('mongoose');
-const Passport = require('passport');
-const GoogleAuth = require('passport-google-oauth').OAuth2Strategy;
-
-if(process.env.NODE_ENV === 'production') {
-  var { getOrSaveUser, serialize, deserialize } = require('./mod_5_pass_db');
-} else {
-  var { getOrSaveUser, serialize, deserialize } = require('./mod_5_pass_json');    
-}
+import Passport from 'passport';
+import { OAuth2Strategy as GoogleAuth } from 'passport-google-oauth';
+import { getOrSaveUser, serialize, deserialize } from './mod_5_pass_db.js';
 
 let connection_string;
 if (process.env.PASSPORT) {
@@ -25,4 +18,4 @@ if(connection_string) {
   Passport.deserializeUser(deserialize);
 }
 
-module.exports = Passport;
+export { Passport };

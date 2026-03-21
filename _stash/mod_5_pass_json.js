@@ -1,3 +1,10 @@
+// run as follows
+if(process.env.NODE_ENV === 'production') {
+} else {
+  var { getOrSaveUser, serialize, deserialize } = require('./mod_5_pass_json');    
+}
+
+// json database
 console.logD('DEBUG: passport_json:');
 const fs = require('fs');
 const path = require('path');
