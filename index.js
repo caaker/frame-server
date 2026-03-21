@@ -9,8 +9,6 @@ console.logD('------------------------------------------------------------------
 console.logD('DEBUG: index.js: time: ' + time());
 console.logD('DEBUG: current node version: ' + process.version);
 
-const express = require('express');
-
 import express from 'express';
 
 const app = express();
@@ -19,6 +17,6 @@ const app = express();
 app.enable('trust proxy');
 
 // allow cross origin access with cors module
-require('./mod_00_cors')(app);
+// require('./mod_00_cors')(app);
 
 // require('./index-1');
