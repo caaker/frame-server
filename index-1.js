@@ -1,7 +1,4 @@
 
-// redirect http requests to https
-require('./mod_1_redirect')(app);
-
 // log ip addresses of clients
 require('./mod_2_ip')(app);
 

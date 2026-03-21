@@ -1,4 +1,4 @@
-import './global';
+import './global.js';
 
 import { cofigureShutdown } from './mod_00_shutdown.js';
 cofigureShutdown();
@@ -19,4 +19,6 @@ const server = startServer(app);
 import { websocket } from './mod_3_ws';
 websocket(server);
 
-// require('./index-1');
+import { configureRedirect } from './mod_1_redirect';
+configureRedirect(app);
+
