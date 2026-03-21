@@ -1,5 +1,5 @@
 console.logD('DEBUG: passport:');
-import Passport from 'passport';
+import passport from 'passport';
 import { OAuth2Strategy as GoogleAuth } from 'passport-google-oauth';
 import { getOrSaveUser, serialize, deserialize } from './mod_5_pass_db.js';
 
@@ -13,9 +13,9 @@ if (process.env.PASSPORT) {
 
 if(connection_string) {
   const GAObject = new GoogleAuth(connection_string, getOrSaveUser);
-  Passport.use('google', GAObject);
-  Passport.serializeUser(serialize);
-  Passport.deserializeUser(deserialize);
+  passport.use('google', GAObject);
+  passport.serializeUser(serialize);
+  passport.deserializeUser(deserialize);
 }
 
-export { Passport };
+export { passport };
