@@ -1,7 +1,7 @@
 console.logD('DEBUG: HTTPSredirect:');
 
 // required after upgrade to https
-function configureRedirect(app) {
+export const configureRedirect = (app) => {
 
   //  NODE_ENV is set by the server enviornment, toggle for testing
   const toggle = false;
@@ -26,5 +26,3 @@ function configureRedirect(app) {
     });
   }
 }
-
-exports.configureRedirect = configureRedirect;

@@ -3,7 +3,7 @@ import { clientConnected, clientClosed } from './websocket/ws-user.js';
 
 let ws_server;
 
-function websocket(server) {
+function startWebsocketServer(server) {
   ws_server = new WebSocketServer({ server });
   ws_server.on('connection', clientConnection);
 }
@@ -30,4 +30,4 @@ function routeMessage(json, socket) {
   }
 }
 
-export default websocket;
+export { startWebsocketServer };
