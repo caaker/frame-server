@@ -1,5 +1,3 @@
-console.logD('DEBUG: HTTPSredirect:');
-
 // required after upgrade to https
 export const configureRedirect = (app) => {
 

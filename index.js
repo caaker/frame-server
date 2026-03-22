@@ -15,12 +15,14 @@ import { auth }     from './routes/auth.js';
 import { users }    from './routes/users.js';
 import { test }     from './routes/test.js';
 
-// configure and start
+// configure
 configureShutdown();
 const app = express();
 app.enable('trust proxy');
 configureCORS(app);
 configureRedirect(app);
+
+// start servers
 const server = startServer(app);
 startWebsocketServer(server);
 
@@ -39,7 +41,6 @@ app.use('/users',     users);
 app.use('/auth',      auth);
 app.use('/test',      test);
 
-//
 detectErrors(app);
 
 

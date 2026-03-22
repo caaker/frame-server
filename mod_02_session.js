@@ -1,5 +1,4 @@
 import session from 'express-session';
-console.log('DEBUG: session:');
 
 const session_options = {
 
