@@ -1,10 +1,8 @@
 console.logD('DEBUG: routes:');
 
-module.exports.articles =         require('./routes/articles');
-module.exports.auth =             require('./routes/auth');
-module.exports.users =            require('./routes/users');
-module.exports.test =             require('./routes/test');
-
-// module.exports.openweather =      require('./routes/openweather');
+export { articles } from './routes/articles.js';
+export { auth }     from './routes/auth.js';
+export { users }    from './routes/users.js';
+export { test }     from './routes/test.js';
 
 

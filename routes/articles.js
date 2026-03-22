@@ -1,7 +1,9 @@
 // console.logD('DEBUG: routes: articles', 'cyan');
 
-const router = require('express').Router();
-const DBM = require('../mongo/mongoose');
+import { Router } from 'express';
+import DBM from '../mongo/mongoose.js';
+
+const router = Router();
 
 router.route('/get').get((req, res) => {
   console.logD('DEBUG: routes: /articles/get: ', 'blue');
@@ -37,4 +39,4 @@ function errorHandler(err) {
   // console.logD(error);
 }
 
-module.exports = router;
+export { router as articles };

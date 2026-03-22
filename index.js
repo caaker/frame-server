@@ -8,6 +8,8 @@ import { startWebsocketServer } from './mod_01_ws.js';
 import { session_instance }     from './mod_02_session.js';
 import { passport }             from './mod_03_pass.js';
 import { detectErrors }         from './mod_10_detectErrors.js';
+import { routes }               from './mod_6_routes'
+
 
 // configure and start
 configureShutdown();
@@ -23,12 +25,11 @@ app.use(express.json());
 app.use('/', express.static('./dist'));
 app.use(session_instance);
 
-// passport - uses mongodb
+// passport
 app.use(passport.initialize());
 app.use(passport.session());
 
-// routes - uses mongodb - complete refactor here, but define that file karpathy talked about 
-const routes = require('./mod_6_routes');
+// routes
 app.use('/articles',  routes.articles);
 app.use('/users',     routes.users);
 app.use('/auth',      routes.auth);
