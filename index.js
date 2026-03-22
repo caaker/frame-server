@@ -6,7 +6,7 @@ import { configureRedirect }    from './mod_00_redirect.js';
 import { startServer }          from './mod_01_server.js';
 import { startWebsocketServer } from './mod_01_ws.js';
 import { session_instance }     from './mod_02_session.js';
-import { passport }             from './mod_03_pass.js';
+import { passport }             from './mod_03_passport.js';
 import { detectErrors }         from './mod_10_detectErrors.js';
 
 
