@@ -9,19 +9,19 @@ import './mongoose-connect.js';
  *
 **/
 
-export const getFingerPrint = (id) => {
+const getFingerPrint = (id) => {
   return getOne('FingerPrint', schema.FingerPrint, id);
 };
 
-export const saveFingerPrint = (obj) => {
+const saveFingerPrint = (obj) => {
   return saveOne('FingerPrint', schema.FingerPrint, obj);
 };
 
-export const updateFingerPrint = (id, obj) => {
+const updateFingerPrint = (id, obj) => {
   return updateOne('FingerPrint', schema.FingerPrint, id, obj);
 };
 
-export const deleteFingerPrint = (id) => {
+const deleteFingerPrint = (id) => {
   return deleteOne('FingerPrint', schema.FingerPrint, id);
 };
 
@@ -32,23 +32,23 @@ export const deleteFingerPrint = (id) => {
  *
 **/
 
-export const getArticle = (id) => {
+const getArticle = (id) => {
   return getOne('Article', schema.Article, id);
 };
 
-export const saveArticle = (obj) => {
+const saveArticle = (obj) => {
   return saveOne('Article', schema.Article, obj);
 };
 
-export const updateArticle = (id, obj) => {
+const updateArticle = (id, obj) => {
   return updateOne('Article', schema.Article, id, obj);
 };
 
-export const deleteArticle = (id) => {
+const deleteArticle = (id) => {
   return deleteOne('Article', schema.Article, id);
 };
 
-export const getAllArticles = () => {
+const getAllArticles = () => {
   return getAll('Article', schema.Article);
 };
 
@@ -58,11 +58,11 @@ export const getAllArticles = () => {
  *
 **/
 
-export const getUser = (id) => {
+const getUser = (id) => {
   return getOne('User', schema.User, id);
 };
 
-export const saveUser = (obj) => {
+const saveUser = (obj) => {
   return saveOne('User', schema.User, obj);
 };
 
@@ -105,4 +105,18 @@ const deleteOne = (name, schema, id) => {
 const getAll = (name, schema) => {
   const Model = mongoose.model(name, schema);
   return Model.find({});
+};
+
+export const database = {
+  getFingerPrint,
+  saveFingerPrint,
+  updateFingerPrint,
+  deleteFingerPrint,
+  getArticle,
+  saveArticle,
+  updateArticle,
+  deleteArticle,
+  getAllArticles,
+  getUser,
+  saveUser
 };
