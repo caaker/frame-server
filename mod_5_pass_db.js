@@ -1,5 +1,5 @@
 console.logD('DEBUG: pass_db:');
-import database from './mongo/mongoose.js';
+import { database } from './mongo/mongoose.js';
 
 export function serialize(profile, done) {
   console.log('DEBUG: pass_help: serialize: ');
