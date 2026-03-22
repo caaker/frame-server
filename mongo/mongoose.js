@@ -1,13 +1,10 @@
 import mongoose from 'mongoose';
 import * as schema from './mongoose-schema.js';
-
 import './mongoose-connect.js';
 
-/*
- *
- * LAYER 1 - FINGER PRINTS
- *
-**/
+
+// LAYER 1 - FINGER PRINTS
+
 
 const getFingerPrint = (id) => {
   return getOne('FingerPrint', schema.FingerPrint, id);
@@ -26,11 +23,8 @@ const deleteFingerPrint = (id) => {
 };
 
 
-/*
- *
- * LAYER 1 - ARTICLE METHODS
- *
-**/
+// LAYER 1 - ARTICLE METHODS
+
 
 const getArticle = (id) => {
   return getOne('Article', schema.Article, id);
@@ -52,11 +46,9 @@ const getAllArticles = () => {
   return getAll('Article', schema.Article);
 };
 
-/*
- *
- * LAYER 1 - USER METHODS
- *
-**/
+
+// LAYER 1 - USER METHODS
+
 
 const getUser = (id) => {
   return getOne('User', schema.User, id);
@@ -67,11 +59,7 @@ const saveUser = (obj) => {
 };
 
 
-/*
- *
- * LAYER 0 - MONGOOSE - SINGLE CRUD OPERATIONS - MOVE TO ANOTHER FILE
- *
-**/
+// LAYER 0 - MONGOOSE - SINGLE CRUD OPERATIONS - MOVE TO ANOTHER FILE
 
 
 const getOne = (name, schema, id) => {
@@ -95,11 +83,7 @@ const deleteOne = (name, schema, id) => {
 };
 
 
-/*
- *
- * LAYER 0 - MONGOOSE - ADDITIONAL OPERATIONS
- *
-**/
+// LAYER 0 - MONGOOSE - ADDITIONAL OPERATIONS
 
 
 const getAll = (name, schema) => {
