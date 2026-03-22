@@ -8,7 +8,7 @@ import { startWebsocketServer } from './mod_01_ws.js';
 import { session_instance }     from './mod_02_session.js';
 import { passport }             from './mod_03_pass.js';
 import { detectErrors }         from './mod_10_detectErrors.js';
-import { routes }               from './mod_6_routes'
+import { routes }               from './mod_6_routes.js'
 
 
 // configure and start

@@ -1,25 +1,25 @@
-const router = require('express').Router();
-const passport = require('passport');
+import { Router } from 'express';
+import passport from 'passport';
+
+const router = Router();
 
 /*
 ****************************************************************************************************/
 
 router.get('/google', (req, res, next) => {
-
-  // referer is set by the browser and contains the browser url
   const referer = req.get('referer');
   console.logD('DEBUG: routes: /auth/google: ', 'blue');
   const config = {
     scope: ['email', 'profile'],
     state: referer
   }
-  passport.authenticate('google', config )(req, res, next);
+  passport.authenticate('google', config)(req, res, next);
 });
 
 /*
 /****************************************************************************************************/
 
-router.get('/google/callback', getHost, authenticateWrap );
+router.get('/google/callback', getHost, authenticateWrap);
 function getHost(req, res, next) {
   const referer = req.query.state;
   console.logD('DEBUG: routes: /auth/google/callback: ', 'blue');
@@ -40,4 +40,4 @@ router.get('/logout', (req, res) => {
   res.redirect(referer);
 });
 
-module.exports = router;
+export { router as auth };
