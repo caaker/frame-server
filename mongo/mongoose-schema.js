@@ -1,18 +1,13 @@
-/* 
+import { Schema } from 'mongoose';
 
-implicits - id, __v
+// implicits - id, __v
 
-*/
-
-const { Schema } = require('mongoose');
-const schema = {};
-
-schema.FingerPrint = new Schema({
+const FingerPrint = new Schema({
   agent:     { type: String, required: true },
   timestamp: { type: Date,   required: true, default: Date.now }
 });
 
-schema.User = new Schema({
+const User = new Schema({
   id_google: { type: String, required: true, unique: true },
   type:      { type: String, required: false },
   name:      { type: String, required: true },
@@ -21,7 +16,7 @@ schema.User = new Schema({
   timestamp: { type: Date,   required: true, default: Date.now }
 });
 
-schema.Article = new Schema({
+const Article = new Schema({
   link:       { type: String, required: true  },
   image:      { type: String, required: true  },
   title:      { type: String, required: true  },
@@ -32,15 +27,21 @@ schema.Article = new Schema({
   timestamp:  { type: Date,   required: true, default: Date.now }
 });
 
-schema.Bookmark = new Schema({
+const Bookmark = new Schema({
   url:       { type: String, required: true },
   timestamp: { type: Date, default: Date.now }
 });
 
-schema.Chat = new Schema({
+const Chat = new Schema({
   from:      { type: String, required: true },
   to:        { type: String, required: true },
   timestamp: { type: Date,   required: true, default: Date.now }
 });
 
-module.exports = schema;
+export {
+  FingerPrint,
+  User,
+  Article,
+  Bookmark,
+  Chat
+};

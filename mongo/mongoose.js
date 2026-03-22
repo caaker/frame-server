@@ -1,7 +1,7 @@
-const mongoose =  require('mongoose');
-const schema =    require('./mongoose-schema.js');
+import mongoose from 'mongoose';
+import * as schema from './mongoose-schema.js';
 
-require('./mongoose-connect');
+import './mongoose-connect.js';
 
 /*
  *
@@ -9,19 +9,19 @@ require('./mongoose-connect');
  *
 **/
 
-exports.getFingerPrint = (id) => {
+export const getFingerPrint = (id) => {
   return getOne('FingerPrint', schema.FingerPrint, id);
 };
 
-exports.saveFingerPrint = (obj) => {
+export const saveFingerPrint = (obj) => {
   return saveOne('FingerPrint', schema.FingerPrint, obj);
 };
 
-exports.updateFingerPrint = (id, obj) => {
+export const updateFingerPrint = (id, obj) => {
   return updateOne('FingerPrint', schema.FingerPrint, id, obj);
 };
 
-exports.deleteFingerPrint = (id) => {
+export const deleteFingerPrint = (id) => {
   return deleteOne('FingerPrint', schema.FingerPrint, id);
 };
 
@@ -32,23 +32,23 @@ exports.deleteFingerPrint = (id) => {
  *
 **/
 
-exports.getArticle = (id) => {
+export const getArticle = (id) => {
   return getOne('Article', schema.Article, id);
 };
 
-exports.saveArticle = (obj) => {
+export const saveArticle = (obj) => {
   return saveOne('Article', schema.Article, obj);
 };
 
-exports.updateArticle = (id, obj) => {
+export const updateArticle = (id, obj) => {
   return updateOne('Article', schema.Article, id, obj);
 };
 
-exports.deleteArticle = (id) => {
+export const deleteArticle = (id) => {
   return deleteOne('Article', schema.Article, id);
 };
 
-exports.getAllArticles = () => {
+export const getAllArticles = () => {
   return getAll('Article', schema.Article);
 };
 
@@ -58,11 +58,11 @@ exports.getAllArticles = () => {
  *
 **/
 
-exports.getUser = (id) => {
+export const getUser = (id) => {
   return getOne('User', schema.User, id);
 };
 
-exports.saveUser = (obj) => {
+export const saveUser = (obj) => {
   return saveOne('User', schema.User, obj);
 };
 
@@ -106,4 +106,3 @@ const getAll = (name, schema) => {
   const Model = mongoose.model(name, schema);
   return Model.find({});
 };
-
