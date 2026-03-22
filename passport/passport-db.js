@@ -1,4 +1,4 @@
-import { database } from './mongo/mongoose.js';
+import { database } from '../mongo/mongoose.js';
 
 function userFound(done, props) {
   done(null, props);
