@@ -10,7 +10,6 @@ import { passport }             from './mod_03_pass.js';
 import { detectErrors }         from './mod_10_detectErrors.js';
 import { routes }               from './mod_6_routes.js'
 
-
 // configure and start
 configureShutdown();
 const app = express();
