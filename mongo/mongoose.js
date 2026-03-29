@@ -86,9 +86,10 @@ const deleteOne = (name, schema, id) => {
 // LAYER 0 - MONGOOSE - ADDITIONAL OPERATIONS
 
 
+// -1, is descending, and for timestamps this will be newest to oldest
 const getAll = (name, schema) => {
   const Model = mongoose.model(name, schema);
-  return Model.find({});
+  return Model.find({}).sort({ timestamp: -1 });
 };
 
 export const database = {
