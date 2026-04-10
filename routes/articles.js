@@ -1,8 +1,5 @@
-// console.logD('DEBUG: routes: articles', 'cyan');
-
-import { Router } from 'express';
 import { database } from '../mongo/mongoose.js';
-
+import { Router } from 'express';
 const router = Router();
 
 router.route('/get').get((req, res) => {

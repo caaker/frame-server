@@ -12,10 +12,12 @@ import { passport }             from './mod_03_passport.js';
 import { detectErrors }         from './mod_10_detectErrors.js';
 
 // routes
-import { articles } from './routes/articles.js';
-import { auth }     from './routes/auth.js';
-import { users }    from './routes/users.js';
-import { test }     from './routes/test.js';
+import { agents_chatgpt }       from './routes/agents_chatgpt.js';
+import { agents_grok }          from './routes/agents_grok.js';
+import { articles }             from './routes/articles.js';
+import { auth }                 from './routes/auth.js';
+import { test }                 from './routes/test.js';
+import { users }                from './routes/users.js';
 
 // configure
 configureShutdown();
@@ -34,10 +36,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // routes
-app.use('/auth',      auth);
-app.use('/articles',  articles);
-app.use('/users',     users);
-app.use('/test',      test);
+app.use('/agents_chatgpt',  agents_chatgpt);
+app.use('/agents_grok',     agents_grok);
+app.use('/articles',        articles);
+app.use('/auth',            auth);
+app.use('/test',            test);
+app.use('/users',           users);
 
 // error handling
 detectErrors(app);
