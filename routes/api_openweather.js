@@ -10,7 +10,7 @@ router.route('/air').get(async (req, res) => {
     const data = await response.json();
     res.status(200).json(data);
   } catch (error) {
-    console.error('DEBUG: Fetch to openweather failed:', error);
+    console.error('DEBUG: Fetch to openweather/air failed:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
@@ -23,6 +23,7 @@ router.route('/weather').get(async (req, res) => {
     const data = await response.json();
     res.status(200).json(data);
   } catch (error) {
+    console.error('DEBUG: Fetch to openweather/weather failed:', error);
     res.status(500).json({ error: 'Weather Fetch Failed' });
   }
 });
