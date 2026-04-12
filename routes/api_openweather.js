@@ -15,4 +15,4 @@ router.route('/openweather').get(async (req, res) => {
   }
 });
 
-export { router as openweather };
+export { router as api_openweather };
