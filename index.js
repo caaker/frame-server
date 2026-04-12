@@ -13,8 +13,8 @@ import { detectErrors }         from './mod_10_detectErrors.js';
 
 // routes
 import { api_openweather }      from './routes/api_openweather.js';
-import { agents_chatgpt }       from './routes/agents_chatgpt.js';
-import { agents_grok }          from './routes/agents_grok.js';
+import { api_chatgpt }          from './routes/api_chatgpt.js';
+import { api_grok }             from './routes/api_grok.js';
 import { articles }             from './routes/articles.js';
 import { auth }                 from './routes/auth.js';
 import { test }                 from './routes/test.js';
@@ -38,8 +38,8 @@ app.use(passport.session());
 
 // routes
 app.use('/api_openweather', api_openweather);
-app.use('/agents_chatgpt',  agents_chatgpt);
-app.use('/agents_grok',     agents_grok);
+app.use('/api_chatgpt',     api_chatgpt);
+app.use('/api_grok',        api_grok);
 app.use('/articles',        articles);
 app.use('/auth',            auth);
 app.use('/test',            test);
