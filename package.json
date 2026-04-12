@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "scripts": {
     "server": "node --experimental-detect-module index.js",
     "server-dev": "nodemond --experimental-detect-module index.js"
