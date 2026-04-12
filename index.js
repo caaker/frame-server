@@ -12,6 +12,7 @@ import { passport }             from './mod_03_passport.js';
 import { detectErrors }         from './mod_10_detectErrors.js';
 
 // routes
+import { api_openweather }      from './routes/api_openweather.js';
 import { agents_chatgpt }       from './routes/agents_chatgpt.js';
 import { agents_grok }          from './routes/agents_grok.js';
 import { articles }             from './routes/articles.js';
@@ -36,6 +37,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // routes
+app.use('/api_openweather', api_openweather);
 app.use('/agents_chatgpt',  agents_chatgpt);
 app.use('/agents_grok',     agents_grok);
 app.use('/articles',        articles);
