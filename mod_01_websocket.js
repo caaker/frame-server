@@ -1,5 +1,5 @@
 import { WebSocketServer } from 'ws';
-import { clientConnected, clientClosed } from './websocket/ws-user.js';
+import { clientConnected, clientClosed, receivedFingerPrint, receivedEcho } from './websocket/ws-user.js';
 
 let ws_server;
 
@@ -18,11 +18,11 @@ function routeMessage(json, socket) {
   try {
     const obj = JSON.parse(json);
     if (obj.type === 'fingerprint') {
-      User.receivedFingerPrint(socket, obj);
+      receivedFingerPrint(socket, obj);
       return;
     }  
     if (obj.type === 'echo') {
-      User.receivedEcho(socket, obj);
+      receivedEcho(socket, obj);
       return;
     }
   } catch (err) {
