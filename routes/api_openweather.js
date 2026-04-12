@@ -2,7 +2,7 @@ import { Router } from 'express';
 const router = Router();
 const OPENWEATHER_KEY = '78fd50d70e6c6a18205f31af5ff95107';
 
-router.route('/api_openweather').get(async (req, res) => {
+router.route('/air').get(async (req, res) => {
   const { lat, lon } = req.query;
   try {
     const url = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${OPENWEATHER_KEY}`;
@@ -12,6 +12,18 @@ router.route('/api_openweather').get(async (req, res) => {
   } catch (error) {
     console.error('DEBUG: Fetch to openweather failed:', error);
     res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+router.route('/weather').get(async (req, res) => {
+  const { lat, lon } = req.query;
+  try {
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${OPENWEATHER_KEY}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(500).json({ error: 'Weather Fetch Failed' });
   }
 });
 
