@@ -1,4 +1,3 @@
-// required after upgrade to https
 export const configureRedirect = (app) => {
 
   //  NODE_ENV is set by the server enviornment, toggle for testing
@@ -17,8 +16,6 @@ export const configureRedirect = (app) => {
         res.redirect(`https://${ req.header('host') }${ req.url }`);
 
       } else {
-
-        // do nothing
         next();
       }
     });
