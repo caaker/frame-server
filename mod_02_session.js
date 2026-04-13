@@ -1,4 +1,5 @@
 import session from 'express-session';
+import MongoStore from 'connect-mongo';
 
 const session_options = {
 
@@ -7,6 +8,14 @@ const session_options = {
 
   // 'secret' is used to sign the cookie, and should be moved to an environment variable or similar
   secret: 'iamnotasecret016',
+
+  // only this property was added to update to use mongodb
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGO, // Replace with your connection string
+    ttl: 14 * 24 * 60 * 60, // Sessions expire in 14 days
+    autoRemove: 'native', // Let MongoDB handle expired session deletion
+    touchAfter: 24 * 3600 // Only update the session in DB once every 24 hours (unless data changes)
+  }),
 
   // 'saveUninitialized' default is true but we will set it explicitly.
   // this means all users wether they login or not have a session cookie

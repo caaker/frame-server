@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const connection_string = process.env.MONGO || 'mongodb://127.0.0.1:27017/myapp';
+const connection_string = process.env.MONGO;
 
 // 10 seconds timeout
 const connection_params = {
