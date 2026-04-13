@@ -11,7 +11,7 @@ const session_options = {
 
   // only this property was added to update to use mongodb
   store: MongoStore.create({
-    mongoUrl: process.env.MONGO, // Replace with your connection string
+    mongoUrl: process.env.MONGO,
     ttl: 14 * 24 * 60 * 60, // Sessions expire in 14 days
     autoRemove: 'native', // Let MongoDB handle expired session deletion
     touchAfter: 24 * 3600 // Only update the session in DB once every 24 hours (unless data changes)
