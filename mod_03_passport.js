@@ -1,5 +1,6 @@
 import passport from 'passport';
-import { OAuth2Strategy as GoogleAuth } from 'passport-google-oauth';
+// import { OAuth2Strategy as GoogleAuth } from 'passport-google-oauth';
+import { Strategy as GoogleAuth } from 'passport-google-oauth20';
 import { getOrSaveUser, serialize, deserialize } from './passport/passport-db.js';
 
 let connection_string;
