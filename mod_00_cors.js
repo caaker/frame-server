@@ -5,7 +5,6 @@ export const configureCORS = (app) => {
     origin: [
       'https://chris-temp-level-0.github.io', 
       'https://caaker.github.io', 
-      'http://localhost:3000',
       /^https:\/\/.*\.github\.dev(:[0-9]+)?$/
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],

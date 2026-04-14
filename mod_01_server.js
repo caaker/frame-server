@@ -1,18 +1,22 @@
 // render has a proxy server that terminates https and sends data as http
 import http from 'http';
 
-const configureServer = (server, name) => {
-  const port = process.env.PORT || 3000;
-  server.listen(port, '0.0.0.0', (err) => {
-    if (err) {
-      console.error(`DEBUG: Error starting ${name} server module`);
-      process.exit(1);
-    }
+const configureServer = (server, port, name) => {
+
+  server.on('error', (err) => {
+    console.logD(`DEBUG: Server failed to start: ${err.message}`, 'red');
+    process.exit(1);
+  });
+
+  server.listen(port, '0.0.0.0', () => {
     console.logD(`DEBUG: ${name} server: started: port ${port}`, 'green');
   });
+
 };
+
 export const startServer = (app) => {
   const server = http.createServer(app);
-  configureServer(server, 'local');
+  const port = process.env.PORT || 3000;
+  configureServer(server, port, 'local');
   return server;
 };
