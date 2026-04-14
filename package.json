@@ -9,13 +9,13 @@
   },
   "dependencies": {
     "connect-mongo": "^5.1.0",
-    "cors": "^2.8.5",
+    "cors": "^2.8.6",
     "express": "^4.21.2",
     "express-session": "^1.18.2",
     "mongoose": "^8.18.1",
     "openai": "^6.34.0",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
-    "ws": "^8.18.3"
+    "ws": "^8.20.0"
   }
 }
