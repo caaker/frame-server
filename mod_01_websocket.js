@@ -1,10 +1,8 @@
 import { WebSocketServer } from 'ws';
 import { clientConnected, clientClosed, receivedFingerPrint, receivedEcho } from './websocket/ws-user.js';
 
-let ws_server;
-
 function startWebsocketServer(server) {
-  ws_server = new WebSocketServer({ server });
+  const ws_server = new WebSocketServer({ server });
   ws_server.on('connection', clientConnection);
 }
 
