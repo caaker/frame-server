@@ -28,11 +28,17 @@ configureCORS(app);
 configureRedirect(app);
 
 // app
+
+// populates req.body when there is incoming json data
 app.use(express.json());
+
+// serves frontend files as oppoosed to behaving like a pure API
 app.use('/', express.static('./dist'));
+
+// allows the app to remember users; in this case mongodb is used
 app.use(session_instance);
 
-// passport
+// required for passport authentication
 app.use(passport.initialize());
 app.use(passport.session());
 
