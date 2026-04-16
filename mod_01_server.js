@@ -11,10 +11,10 @@ const configureServer = (server, port, name) => {
   server.listen(port, '0.0.0.0', () => {
     console.logD(`DEBUG: ${name} server: started: port ${port}`, 'green');
   });
-
 };
 
 export const startServer = (app) => {
+  console.logD(`DEBUG: Module: server: `);
   const server = http.createServer(app);
   const port = process.env.PORT || 3000;
   configureServer(server, port, 'local');
