@@ -1,8 +1,9 @@
 export const configureRedirect = (app) => {
+  console.logD(`DEBUG: Module: redirect: process.env.NODE_ENV ${process.env.NODE_ENV}`);
 
   //  NODE_ENV is set to production by render automatically
   if(process.env.NODE_ENV === 'production') {
-    app.use((req, res, next) => {
+      app.use((req, res, next) => {
 
       // x-fowarded-protocol is typically added by the proxy server
       // ensure proxy server writes this to eliminate spoofing
