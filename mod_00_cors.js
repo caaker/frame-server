@@ -1,6 +1,7 @@
 import cors from 'cors';
 
 export const configureCORS = (app) => {
+  console.logD(`DEBUG: Module: cors: `);
   const corsOptions = {
     origin: [
       'https://chris-temp-level-0.github.io', 
