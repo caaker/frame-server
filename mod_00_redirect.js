@@ -1,5 +1,5 @@
 export const configureRedirect = (app) => {
-  console.logD(`DEBUG: Module: redirect: process.env.NODE_ENV ${process.env.NODE_ENV}`);
+  console.logD(`DEBUG: Module: redirect: process.env.NODE_ENV = ${process.env.NODE_ENV}`);
 
   //  NODE_ENV is set to production by render automatically
   if(process.env.NODE_ENV === 'production') {
