@@ -5,10 +5,8 @@ import { getOrSaveUser, serialize, deserialize } from './passport/passport-db.js
 let connection_string;
 if (process.env.PASSPORT) {
   connection_string = JSON.parse(process.env.PASSPORT).Google;
-  console.logD('DEBUG: passport: connection_string found: ');
-} else {
-  console.logD('DEBUG: passport: connection_string not found', 'red');
 }
+console.logD(`DEBUG: Module: passport: connection_string = {connection_string}`);
 
 if(connection_string) {
   const GAObject = new GoogleAuth(connection_string, getOrSaveUser);
