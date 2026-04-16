@@ -2,8 +2,6 @@ import passport from 'passport';
 import { Router } from 'express';
 const router = Router();
 
-/*****************************************************************************************************/
-
 router.get('/google', (req, res, next) => {
   const referer = req.get('referer');
   console.logD('DEBUG: routes: /auth/google: ', 'blue');
@@ -13,8 +11,6 @@ router.get('/google', (req, res, next) => {
   }
   passport.authenticate('google', config)(req, res, next);
 });
-
-/*****************************************************************************************************/
 
 router.get('/google/callback', getHost, authenticateWrap);
 function getHost(req, res, next) {
@@ -27,14 +23,9 @@ function authenticateWrap(req, res, next) {
   passport.authenticate('google', req.auth_options)(req, res, next);
 }
 
-/*****************************************************************************************************/
-
-// add a fall back to root 
 router.get('/logout', (req, res) => {
   const referer = req.get('referer') || '/';
   console.logD('DEBUG: routes: /auth/logout: ', 'blue');
-
-  // moved redirect inside the callback
   req.logout((err) => {
     if (err) return next(err);
     res.redirect(referer);

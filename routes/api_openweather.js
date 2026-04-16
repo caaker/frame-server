@@ -4,28 +4,18 @@ const OPENWEATHER_KEY = '78fd50d70e6c6a18205f31af5ff95107';
 
 router.route('/air').get(async (req, res) => {
   const { lat, lon } = req.query;
-  try {
-    const url = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${OPENWEATHER_KEY}`;
-    const response = await fetch(url);
-    const data = await response.json();
-    res.status(200).json(data);
-  } catch (error) {
-    console.error('DEBUG: Fetch to openweather/air failed:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
+  const url = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${OPENWEATHER_KEY}`;
+  const response = await fetch(url);
+  const data = await response.json();
+  res.status(200).json(data);
 });
 
 router.route('/weather').get(async (req, res) => {
   const { lat, lon } = req.query;
-  try {
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${OPENWEATHER_KEY}`;
-    const response = await fetch(url);
-    const data = await response.json();
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${OPENWEATHER_KEY}`;
+  const response = await fetch(url);
+  const data = await response.json();
     res.status(200).json(data);
-  } catch (error) {
-    console.error('DEBUG: Fetch to openweather/weather failed:', error);
-    res.status(500).json({ error: 'Weather Fetch Failed' });
-  }
 });
 
 export { router as api_openweather };
