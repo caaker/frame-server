@@ -6,9 +6,9 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI });
 router.post('/message', async (req, res) => {
   const { message } = req.body;
   const response = await openai.responses.create({
-    model: 'gpt-5.3-mini',
+    model: 'gpt-4o-mini',
     input: [
-      { role: 'system', content: 'You are a helpful assistant for health and logevity.' },
+      { role: 'system', content: 'You are a helpful assistant for health and longevity.' },
       { role: 'user', content: message }
     ]
   });
