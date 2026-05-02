@@ -22,7 +22,6 @@ const ArticleSchema = new Schema({
   summary:   { type: String, required: true },
   tag:       { type: String, required: true, default: 'health' },
   domain:    { type: String, required: true },
-  owner:     { type: String, required: true, default: '5eebf1dc9148400351a49dd0' },
   timestamp: { type: Date,   required: true, default: Date.now }
 });
 
@@ -37,7 +36,6 @@ const ChatSchema = new Schema({
   timestamp: { type: Date,   required: true, default: Date.now }
 });
 
-// Compiled Models
 export const FingerPrint = model('FingerPrint', FingerPrintSchema);
 export const User        = model('User', UserSchema);
 export const Article     = model('Article', ArticleSchema);

@@ -1,4 +1,4 @@
-import * as model from './mongoose-schema.js';
+import * as model from './mongoose-model.js';
 import './mongoose-connect.js';
 
 // FINGERPRINT
