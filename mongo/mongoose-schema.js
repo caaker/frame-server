@@ -1,13 +1,12 @@
-import { Schema } from 'mongoose';
+import mongoose from 'mongoose';
+const { Schema, model } = mongoose;
 
-// implicits - id, __v
-
-const FingerPrint = new Schema({
+const FingerPrintSchema = new Schema({
   agent:     { type: String, required: true },
   timestamp: { type: Date,   required: true, default: Date.now }
 });
 
-const User = new Schema({
+const UserSchema = new Schema({
   id_google: { type: String, required: true, unique: true },
   type:      { type: String, required: false },
   name:      { type: String, required: true },
@@ -16,32 +15,31 @@ const User = new Schema({
   timestamp: { type: Date,   required: true, default: Date.now }
 });
 
-const Article = new Schema({
-  link:       { type: String, required: true  },
-  image:      { type: String, required: true  },
-  title:      { type: String, required: true  },
-  summary:    { type: String, required: true  },
-  tag:        { type: String, required: true, default: 'health' },
-  domain:     { type: String, required: true },
-  owner:      { type: String, required: true, default: '5eebf1dc9148400351a49dd0' },
-  timestamp:  { type: Date,   required: true, default: Date.now }
+const ArticleSchema = new Schema({
+  link:      { type: String, required: true },
+  image:     { type: String, required: true },
+  title:     { type: String, required: true },
+  summary:   { type: String, required: true },
+  tag:       { type: String, required: true, default: 'health' },
+  domain:    { type: String, required: true },
+  owner:     { type: String, required: true, default: '5eebf1dc9148400351a49dd0' },
+  timestamp: { type: Date,   required: true, default: Date.now }
 });
 
-const Bookmark = new Schema({
+const BookmarkSchema = new Schema({
   url:       { type: String, required: true },
   timestamp: { type: Date, default: Date.now }
 });
 
-const Chat = new Schema({
+const ChatSchema = new Schema({
   from:      { type: String, required: true },
   to:        { type: String, required: true },
   timestamp: { type: Date,   required: true, default: Date.now }
 });
 
-export {
-  FingerPrint,
-  User,
-  Article,
-  Bookmark,
-  Chat
-};
+// Compiled Models
+export const FingerPrint = model('FingerPrint', FingerPrintSchema);
+export const User        = model('User', UserSchema);
+export const Article     = model('Article', ArticleSchema);
+export const Bookmark    = model('Bookmark', BookmarkSchema);
+export const Chat        = model('Chat', ChatSchema);
