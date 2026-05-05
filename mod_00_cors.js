@@ -1,5 +1,8 @@
 import cors from 'cors';
-
+/*
+options removed because they are default as follows:
+  methods: ['GET, PUT, POST, DELETE, HEAD , PATCH']
+*/
 export const configureCORS = (app) => {
   console.logD(`DEBUG: Module: cors: `);
   const corsOptions = {
@@ -8,7 +11,6 @@ export const configureCORS = (app) => {
       'https://caaker.github.io', 
       /^https:\/\/.*\.github\.dev(:[0-9]+)?$/
     ],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
   };

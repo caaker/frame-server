@@ -21,7 +21,7 @@ const session_options = {
   // this means all users wether they login or not have a session cookie
   saveUninitialized: true,
 
-  // default is true, but set to false as mongoDB supports touch operatoins
+  // 'reseave' default is true, but set to false as mongoDB supports touch operations
   // we do not want to resave to the session store on each user request if no data changed
   // note that mongodb-connect will automatically reset maxAge on each request
   resave: false,
@@ -33,7 +33,7 @@ const session_options = {
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'None',
 
-    // default but setting explicity so cookie persists the length of the browser
+    // 'maxAge' default but setting explicity so cookie persists the length of the browser
     maxAge: null
   }
 };
