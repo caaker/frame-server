@@ -1,5 +1,4 @@
 // This software architecure is a modular monolith
-
 import './global.js';
 import express from 'express';
 import { configure }            from './mod_00__configure.js';
@@ -22,9 +21,11 @@ app.use(passport.session());
 // configure routes
 app.use(router);
 
-// detect errors
+// configure error detection
 detectErrors(app);
 
-// run HTTPserver and WSServer
+// start the https server
 const server = startServer(app);
+
+// start the websocket server
 startWebsocketServer(server);
