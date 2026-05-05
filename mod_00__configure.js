@@ -3,7 +3,7 @@ import { configureShutdown } from './mod_00_shutdown.js';
 import { configureCORS }     from './mod_00_cors.js';
 import { configureRedirect } from './mod_00_redirect.js';
 
-const configureApp = (app) => {
+const configure = (app) => {
 
   // best practice for server shutdown
   configureShutdown(); 
@@ -19,7 +19,7 @@ const configureApp = (app) => {
 
   // serve static files
   app.use('/', express.static('./dist'));
-  
+
 };
 
-export { configureApp };
+export { configure };

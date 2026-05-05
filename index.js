@@ -1,4 +1,4 @@
-// This software architecure is a modular monolith
+// This software architecture is a modular monolith
 import './global.js';
 import express from 'express';
 import { configure }            from './mod_00__configure.js';
